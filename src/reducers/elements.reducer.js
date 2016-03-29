@@ -59,7 +59,8 @@ export default function elementsReducer(state=data, action) {
     }
     case "ADD_ELM" : {
       let {elmtype,data={}} = action.data;
-      return state.updateIn([elmtype],(list)=>list.push(Object.assign({},defaultData[elmtype],data)));
+      console.log(defaultData[elmtype].merge(data));
+      return state.updateIn([elmtype],(list)=>list.push(defaultData[elmtype].merge(data)));
     }
     case "DELETE_ELM" : {
       let {elmtype,index} = action.data;
