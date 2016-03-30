@@ -1,37 +1,15 @@
 import Immutable from "immutable"
 import {OBJECTS,WP_DATATYPES} from "../datatypes.constants.js"
+import {dataSample,defaultDataSample} from "./datasample"
 
-const data = Immutable.fromJS({
-  [OBJECTS.WP]: [
-    {
-        [WP_DATATYPES.TYPE_NAME]: "WP1",
-        [WP_DATATYPES.TYPE_LAT]: 10,
-        [WP_DATATYPES.TYPE_LNG]: 10,
-        [WP_DATATYPES.TYPE_FL]: 100
-    },
-    {
-        [WP_DATATYPES.TYPE_NAME]: "WP2",
-        [WP_DATATYPES.TYPE_LAT]: 10,
-        [WP_DATATYPES.TYPE_LNG]: 10,
-        [WP_DATATYPES.TYPE_FL]: 500
-    },
-    {
-        [WP_DATATYPES.TYPE_NAME]: "WP3",
-        [WP_DATATYPES.TYPE_LAT]: 10,
-        [WP_DATATYPES.TYPE_LNG]: 10,
-        [WP_DATATYPES.TYPE_FL]: 50
-    }
-  ]
-});
+const data = Immutable.fromJS(dataSample);
 
-const defaultData = {
-  [OBJECTS.WP] : Immutable.fromJS({
-    [WP_DATATYPES.TYPE_NAME]: "WP__",
-    [WP_DATATYPES.TYPE_LAT]: 10,
-    [WP_DATATYPES.TYPE_LNG]: 10,
-    [WP_DATATYPES.TYPE_FL]: 100
-  })
-};
+const defaultData = Object.keys(defaultDataSample).reduce((acc,elementKey) => {
+  console.log(elementKey,acc);
+  acc[elementKey] = Immutable.fromJS(defaultDataSample[elementKey]);
+  return acc;
+},{});
+
 
 //TODO config
 const MAX_FL_LVL = 550 ;
@@ -46,7 +24,8 @@ function filter(object,datatype,value){
 }
 
 export default function elementsReducer(state=data, action) {
-  console.log(action);
+  //console.log(action);
+
   switch(action.type) {
     case "UPDATE_ELM" : {
       let {index,elmtype,datatype,value} = action.data;
@@ -58,9 +37,10 @@ export default function elementsReducer(state=data, action) {
         );
     }
     case "ADD_ELM" : {
-      let {elmtype,data={}} = action.data;
-      console.log(defaultData[elmtype].merge(data));
-      return state.updateIn([elmtype],(list)=>list.push(defaultData[elmtype].merge(data)));
+      return addElement(state,action.data)
+    }
+    case "ADD_ELM_MAP" : {
+      return addElement(state,action.data)
     }
     case "DELETE_ELM" : {
       let {elmtype,index} = action.data;
@@ -71,5 +51,9 @@ export default function elementsReducer(state=data, action) {
 
   }
 
+}
+function addElement(state,dataAction) {
+  let {elmtype,data={}} = dataAction;
+  return state.updateIn([elmtype],(list)=>list.push(defaultData[elmtype].merge(data)));
 }
 
