@@ -25,12 +25,12 @@ export default class Waypoint extends Component {
   state = {isHovered: false,isEdited:false};
   mouseDown = false;
   componentDidMount() {
-    document.addEventListener("mousemove", this.handleDocumentMouseMove, false);
+    this.refs.DOM_wp.addEventListener("mousemove", this.handleDocumentMouseMove, false);
     document.addEventListener("mousedown", this.handleDocumentMouseDown, false);
     document.addEventListener("mouseup", this.handleDocumentMouseUp, false);
   }
   componentWillUnmount() {
-    document.removeEventListener("mousemove", this.handleDocumentMouseMove, false);
+    this.refs.DOM_wp.removeEventListener("mousemove", this.handleDocumentMouseMove, false);
     document.removeEventListener("mousedown", this.handleDocumentMouseDown, false);
     document.removeEventListener("mouseup", this.handleDocumentMouseUp, false);
   }
@@ -43,7 +43,7 @@ export default class Waypoint extends Component {
   }
 
   handleDocumentMouseDown = (event) => {
-    event.preventDefault();
+    console.log("mousedown")
     this.mouseDown = true;
 
     if(this.state.isEdited &&
@@ -56,11 +56,7 @@ export default class Waypoint extends Component {
   }
 
   handleDocumentMouseUp = (event) => {
-    event.preventDefault();
-
-    this.mouseDown = false;
-    console.log(this.mouseDown)
-
+    this.mouseDown = false; // todo , export to canvas
   }
 
   mouseLeave(){
@@ -73,7 +69,7 @@ export default class Waypoint extends Component {
       isHovered : true
     });
   }
-  mouseClick(){
+  handleMouseDown(){
     this.setState({isEdited:!this.state.isEdited});
     this.props.onClick();
   }
@@ -89,7 +85,7 @@ export default class Waypoint extends Component {
               size={10}
               onMouseOver={this.mouseOver.bind(this)}
               onMouseLeave={this.mouseLeave.bind(this)}
-              onClick={this.mouseClick.bind(this)}
+              onMouseDown={this.handleMouseDown.bind(this)}
               color={this.getColor()}
             />
             <Infos x={x + 10} y={y}

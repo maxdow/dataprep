@@ -6,7 +6,7 @@ function Triangle(props){
   return <polygon points={d} fill={color}
   onMouseOver={props.onMouseOver}
   onMouseLeave={props.onMouseLeave}
-  onClick={props.onClick}
+  onMouseDown={props.onMouseDown}
   style={{cursor:"pointer"}}
   />
 }
