@@ -36,9 +36,11 @@ export default class Waypoint extends Component {
   }
 
   handleDocumentMouseMove = (event) => {
+
     event.preventDefault();
     if(this.mouseDown && this.state.isEdited) {
-      console.log(event.pageX,event.pageY);
+      console.log(event.clientY-this.posY);
+
     }
   }
 
@@ -69,8 +71,9 @@ export default class Waypoint extends Component {
       isHovered : true
     });
   }
-  handleMouseDown(){
-    this.setState({isEdited:!this.state.isEdited});
+  handleMouseDown(event){
+    this.setState({isEdited:true});
+    this.posY = event.clientY;
     this.props.onClick();
   }
   getColor(){
