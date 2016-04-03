@@ -22,8 +22,15 @@ const Infos = function(props) {
 
 export default class Waypoint extends Component {
 
-  state = {isHovered: false,isEdited:false};
-  mouseDown = false;
+  constructor(props){
+    super(props);
+    this.state = {isHovered: false,isEdited:false,ghostPosition:{
+      x:props.x,
+      y:props.y
+    }};
+    this.mouseDown = false;
+
+  }
   componentDidMount() {
     this.refs.DOM_wp.addEventListener("mousemove", this.handleDocumentMouseMove, false);
     document.addEventListener("mousedown", this.handleDocumentMouseDown, false);
@@ -39,11 +46,17 @@ export default class Waypoint extends Component {
 
     event.preventDefault();
     if(this.mouseDown && this.state.isEdited) {
-      console.log(event.clientY-this.posY);
-
+      const diff = event.clientY-this.posY;
+      console.log(event.clientY-this.posY)
+      this.setState({
+        ghostPosition : {
+          x : this.state.ghostPosition.x,
+          y : this.state.ghostPosition.y + diff
+        }
+      })
     }
   }
-
+//flsize
   handleDocumentMouseDown = (event) => {
     console.log("mousedown")
     this.mouseDown = true;
@@ -73,6 +86,7 @@ export default class Waypoint extends Component {
   }
   handleMouseDown(event){
     this.setState({isEdited:true});
+    console.log("mouse down ----->",event.clientY)
     this.posY = event.clientY;
     this.props.onClick();
   }
@@ -83,6 +97,14 @@ export default class Waypoint extends Component {
   render() {
     const {x,y} = this.props;
     return <g ref="DOM_wp">
+            <Triangle
+              center={this.state.ghostPosition}
+              size={10}
+              onMouseOver={this.mouseOver.bind(this)}
+              onMouseLeave={this.mouseLeave.bind(this)}
+              onMouseDown={this.handleMouseDown.bind(this)}
+              color={"#456"}
+            />
             <Triangle
               center={{x,y}}
               size={10}
