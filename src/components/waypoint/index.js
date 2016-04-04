@@ -32,12 +32,14 @@ export default class Waypoint extends Component {
 
   }
   componentDidMount() {
-    this.refs.DOM_wp.addEventListener("mousemove", this.handleDocumentMouseMove, false);
+    document.addEventListener("mousemove", this.handleDocumentMouseMove, false);
+    // this.refs.DOM_wp.addEventListener("mousemove", this.handleDocumentMouseMove, false);
     document.addEventListener("mousedown", this.handleDocumentMouseDown, false);
     document.addEventListener("mouseup", this.handleDocumentMouseUp, false);
   }
   componentWillUnmount() {
-    this.refs.DOM_wp.removeEventListener("mousemove", this.handleDocumentMouseMove, false);
+    document.removeEventListener("mousemove", this.handleDocumentMouseMove, false);
+    // this.refs.DOM_wp.removeEventListener("mousemove", this.handleDocumentMouseMove, false);
     document.removeEventListener("mousedown", this.handleDocumentMouseDown, false);
     document.removeEventListener("mouseup", this.handleDocumentMouseUp, false);
   }
@@ -51,7 +53,7 @@ export default class Waypoint extends Component {
       this.setState({
         ghostPosition : {
           x : this.state.ghostPosition.x,
-          y : this.state.ghostPosition.y + diff
+          y : this.ghostYPositionStart + diff
         }
       })
     }
@@ -88,6 +90,7 @@ export default class Waypoint extends Component {
     this.setState({isEdited:true});
     console.log("mouse down ----->",event.clientY)
     this.posY = event.clientY;
+    this.ghostYPositionStart = this.state.ghostPosition.y;
     this.props.onClick();
   }
   getColor(){
@@ -100,11 +103,12 @@ export default class Waypoint extends Component {
             <Triangle
               center={this.state.ghostPosition}
               size={10}
-              onMouseOver={this.mouseOver.bind(this)}
-              onMouseLeave={this.mouseLeave.bind(this)}
-              onMouseDown={this.handleMouseDown.bind(this)}
+              onMouseOver={() => {}}
+              onMouseLeave={() => {}}
+              onMouseDown={() => {}}
               color={"#456"}
             />
+            <text x={x+15} y={this.state.ghostPosition.y+15}>{"FL"}</text>
             <Triangle
               center={{x,y}}
               size={10}
