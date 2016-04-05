@@ -46,7 +46,7 @@ class Trajectory extends Component {
         <Waypoint
           data={waypointData}
           key={index}
-          y={getPositionYWaypoint(waypointData.get(WP_DATATYPES.TYPE_FL),canvas.height)}
+          canvasHeight={canvas.height}
           x={getPositionXWaypoint(index,waypoints.size,canvas.width)}
           onUpdate={onUpdate.bind(this,index)}
           onClick={this.handleWPClick.bind(this,index)}
@@ -58,5 +58,6 @@ class Trajectory extends Component {
     )
   }
 }
+          // y={getPositionYWaypoint(waypointData.get(WP_DATATYPES.TYPE_FL),canvas.height)}
 
 export default Trajectory;

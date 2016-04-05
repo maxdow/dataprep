@@ -11,12 +11,12 @@ const defaultData = Object.keys(defaultDataSample).reduce((acc,elementKey) => {
 },{});
 
 
-//TODO config
-const MAX_FL_LVL = 550 ;
+
+const {MAX_FL_LVL,MIN_FL_LVL} = WP_DATATYPES ;
 
 function filterFL(value){
   return value > MAX_FL_LVL ? MAX_FL_LVL :
-         value < 50 ? 50 :
+         value < MIN_FL_LVL ? MIN_FL_LVL :
          value;
 }
 function filter(object,datatype,value){

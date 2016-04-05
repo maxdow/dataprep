@@ -1,13 +1,24 @@
-import React from "react"
+import React,{Component} from "react"
 
-function Triangle(props){
-  const {center, color, size} = props;
+
+
+export default class Triangle extends Component {
+  render() {
+  const {center, color, size} = this.props;
   const d = `${center.x-size},${center.y+size} ${center.x},${center.y-size} ${center.x+size},${center.y+size}`;
-  return <polygon points={d} fill={color}
-  onMouseOver={props.onMouseOver}
-  onMouseLeave={props.onMouseLeave}
-  onMouseDown={props.onMouseDown}
-  style={{cursor:"pointer"}}
-  />
+
+    return <polygon points={d} fill={color}
+      onMouseOver={this.props.onMouseOver}
+      onMouseLeave={this.props.onMouseLeave}
+      onMouseDown={this.props.onMouseDown}
+      onMouseUp={this.props.onMouseUp}
+      style={{cursor:"pointer"}}
+    />
+  }
 }
-export default Triangle;
+Triangle.defaultProps = {
+  onMouseDown : () => {},
+  onMouseLeave : () => {},
+  onMouseUp : () => {},
+  onMouseDown : () => {}
+};
