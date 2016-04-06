@@ -120,7 +120,7 @@ export default class Waypoint extends Component {
                                             y : this.state.ghostPositionY
                                           }}
                                           size={10}
-                                          color={"rgba(0,0,0,0.2)"}
+                                          color={"rgba(0,0,0,0.3)"}
                                           onMouseUp={this.handleMouseUp.bind(this)}
                                         />
                                         <text x={x+15} y={this.state.ghostPositionY+15}>{"FL"+yToFL(this.state.ghostPositionY,canvasHeight)}</text>

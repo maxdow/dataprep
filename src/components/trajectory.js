@@ -16,26 +16,22 @@ function getPositionYWaypoint(fl,canvasHeight){
   return canvasHeight - canvasHeight*fl/ MAX_FL_LVL ;
 }
 
+function getCoordsTrajectory(waypoints,canvas){
+  return waypoints.map((waypoint,index) => [
+    getPositionXWaypoint(index,waypoints.length,canvas.width),
+    getPositionYWaypoint(waypoint.get(WP_DATATYPES.TYPE_FL),canvas.height)
+    ])
+  .reduce((acc,val) => acc.concat(val))
+  .join(" ")
+
+}
+
 class Trajectory extends Component {
   WPhovered = null;
   state = {editedWP : null}
-  /*componentDidMount() {
-    document.addEventListener("mousemove", this.handleMouseMove, false);
-    document.addEventListener("click", this.handleClick, false);
-  }
-  componentWillUnmount() {
-    document.removeEventListener("mousemove", this.handleMouseMove, false);
-    document.removeEventListener("click", this.handleClick, false);
-  }*/
-  handleMouseMove(){
 
-  }
-  handleDocumentClick(){
-
-  }
   handleWPClick(index){
     this.props.onWPClick(index);
-
   }
   render() {
     const {waypoints, canvas, onUpdate} = this.props;
@@ -54,6 +50,7 @@ class Trajectory extends Component {
         />
         )}
       )}
+      <polyline fill="none" stroke="rgba(0,0,0,0.5)" strokeWidth="2" points={getCoordsTrajectory(waypoints,canvas)}/>
     </g>
     )
   }

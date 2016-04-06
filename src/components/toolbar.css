@@ -1,5 +1,7 @@
 .toolbar {
   list-style: none;
+  position: relative;
+  width: 700px;
 }
 .toolbar-button {
   background: transparent;
@@ -28,4 +30,6 @@
 .toolbar-info {
   color: #888;
   font-size: 0.8em;
+  position: absolute;
+  right: 0
 }

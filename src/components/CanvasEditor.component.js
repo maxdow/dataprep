@@ -13,7 +13,7 @@ class CanvasEditor extends Component {
     return {
       x1 : 10,
       y1 : this.props.canvasHeight-1,
-      x2 : this.props.canvasWidth-70,
+      x2 : this.props.canvasWidth-10,
       y2 : this.props.canvasHeight-1
     }
   }
