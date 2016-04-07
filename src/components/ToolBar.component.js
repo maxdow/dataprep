@@ -5,7 +5,6 @@ require("./toolbar.css");
 
 class ToolBarComponent extends Component {
   render() {
-    console.log(this.props)
     return (
     <ul className="toolbar">
       <li><button onClick={this.props.onAddElement.bind(this,OBJECTS.WP)} className="toolbar-button">Add Waypoint</button></li>

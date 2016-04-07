@@ -1,5 +1,6 @@
 export const OBJECTS = {
-  WP : "WP"
+  WP : "WP",
+  FL : "FL"
 };
 
 export const WP_DATATYPES = {

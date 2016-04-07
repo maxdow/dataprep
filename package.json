@@ -24,6 +24,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "font-awesome": "maxdow/Font-Awesome#patch-1",
     "immutable": "^3.7.6",
     "openlayers": "^3.14.2",
     "react": "^0.14.6",

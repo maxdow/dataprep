@@ -3,7 +3,7 @@ var webpack = require("webpack");
 
 module.exports = {
   //devtool: "eval",
-  devtool : "eval-source-map",
+  devtool : "source-map",
   entry: [
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
@@ -23,7 +23,8 @@ module.exports = {
       loaders: ["react-hot", "babel"],
       include: path.join(__dirname, "src")
     },
-    {test: /\.css$/, loader: "style-loader!css-loader"}
+    {test: /\.css$/, loader: "style-loader!css-loader"},
+    {test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader?name=fonts.[ext]" }
     ],
     noParse: /dist\/ol.js/
   }

@@ -1,16 +1,18 @@
 import React, { Component } from "react"
 
 import CanvasEditor from "./CanvasEditor.component.js"
-import ToolBar from "./ToolBar.component.js"
+import ToolBarEditor from "../containers/ToolbarEditor.container"
 import MapEditor from "./MapEditor/MapEditor.component.js"
 
 require("./commun.css");
 
 const App = () => (
-  <div>
-    <ToolBar/>
-    <CanvasEditor />
-    <MapEditor />
+  <div className="wrapper">
+    <div className="editor">
+      <ToolBarEditor/>
+      <CanvasEditor />
+      <MapEditor />
+    </div>
   </div>
 )
 

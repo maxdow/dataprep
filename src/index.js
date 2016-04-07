@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
+import  "font-awesome/css/font-awesome.css";
+
+
 import { createStore } from "redux"
 import reducer from "./reducers/"
+
+
 import App from "./components/App.js";
+
 
 const store = createStore(reducer);
 
