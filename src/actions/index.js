@@ -4,3 +4,10 @@ export const selectElementAction = (data) => {
     data // {elmtype}
   }
 }
+
+export const changeView = (data) => {
+  return {
+    type: "CHANGE_VIEW",
+    data // {coords}
+  }
+}

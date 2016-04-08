@@ -5,7 +5,6 @@
  */
 
 import React, { Component } from "react";
-import { connect } from "react-redux"
 import {OBJECTS,WP_DATATYPES} from "../../datatypes.constants.js"
 
 import "../toolbar.css"

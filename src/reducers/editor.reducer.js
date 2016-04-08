@@ -3,7 +3,8 @@ import {OBJECTS} from "../datatypes.constants.js";
 const defaultState = {
   editMode : false,
   deleteMode : false,
-  selectedElementType : OBJECTS.WP
+  selectedElementType : OBJECTS.WP,
+  currentView : []
 }
 //
 //
