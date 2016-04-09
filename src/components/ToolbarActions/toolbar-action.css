@@ -1,0 +1,24 @@
+.toolbar-action {
+  width: 70px;
+  background: #eee;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  min-height: 100%;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.toolbar-action-button {
+  width: 48px;
+  height: 48px;
+  border:1px solid #555;
+  border-radius: 15px;
+  margin: 0 auto;
+  cursor: pointer;
+  outline: none;
+}
+.toolbar-action-button:hover {
+  background: #aaa;
+}
