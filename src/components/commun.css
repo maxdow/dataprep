@@ -7,11 +7,8 @@ svg {
   user-select: none;
 }
 
-#root {
-  width: 700px;
-  margin : 0 auto;
-}
 
 body {
   background: #fafafa;
 }
+

@@ -1,6 +1,7 @@
 .toolbar-editor {
   display: flex;
-  background: #cecece;
+  background: #eee;
+  border: 1px solid #aaa;
   border-radius: 5px;
 }
 .toolbar-editor li{

@@ -5,16 +5,23 @@ import ToolBarEditor from "../containers/ToolbarEditor.container"
 import ToolBarGeo from "../containers/ToolbarGeo.container"
 import MapEditor from "./MapEditor/MapEditor.component.js"
 
-require("./commun.css");
+import LibraryComponent from "./Library"
+
+import "./commun.css"
+import "./layout.css"
 
 const App = () => (
   <div className="wrapper">
-    <div className="editor">
+    <div className="layout-editors">
       <ToolBarEditor/>
       <CanvasEditor />
       <ToolBarGeo />
       <MapEditor />
     </div>
+    <div className="layout-library">
+      <LibraryComponent />
+    </div>
+
   </div>
 )
 

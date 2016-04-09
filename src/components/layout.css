@@ -1,0 +1,15 @@
+.wrapper {
+  margin : 0 auto;
+  display: flex;
+}
+
+.layout-editors {
+  min-width: 700px;
+}
+.layout-library {
+  min-width: 400px;
+}
+
+.layout-editors , .layout-library {
+  display: inline-block;
+}
