@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import {WP_DATATYPES} from "../datatypes.constants.js"
+import {WP_DATATYPES} from "../../datatypes.constants.js"
 
-import Waypoint from "./waypoint";
+import Waypoint from "../waypoint";
 
 
 //TODO config

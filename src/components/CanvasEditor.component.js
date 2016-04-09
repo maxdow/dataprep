@@ -2,33 +2,17 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux"
 
-import Trajectory from "./trajectory.js";
+import Trajectory from "./objects/trajectory.js";
 import {OBJECTS,WP_DATATYPES} from "../datatypes.constants.js"
 
 
 
 class CanvasEditor extends Component {
 
-  getCoordsBase() {
-    return {
-      x1 : 10,
-      y1 : this.props.canvasHeight-1,
-      x2 : this.props.canvasWidth-10,
-      y2 : this.props.canvasHeight-1
-    }
-  }
-  /*getCoordsTrajectory() {
-    this.props.waypoints
-    return {
-      x1 : 10,
-      y1 : this.props.canvasHeight-1,
-      x2 : this.props.canvasWidth-70,
-      y2 : this.props.canvasHeight-1
-    }
-  }*/
+
   handleWPClick(index) {
     if(this.props.isDeleteMode) {
-      this.props.onDeleteWP(index);
+      this.props.onDeleteWP(index); //todo remove elm
     }
   }
   render() {
@@ -40,7 +24,8 @@ class CanvasEditor extends Component {
 
     return <svg height={this.props.canvasHeight} width={this.props.canvasWidth} >
 
-      <line {...this.getCoordsBase()} stroke="green" strokeWidth={2} />
+
+
       <Trajectory waypoints={waypoints} canvas={canvas}
       onUpdate={this.props.onUpdate.bind(this,OBJECTS.WP)}
       onWPClick={this.handleWPClick.bind(this)}
