@@ -14,7 +14,7 @@ import "./toolbar-editor.css"
 const configByElmType = {
   [OBJECTS.WP] : {
     icon : "fa fa-map-marker",
-    name : "Waypoint"
+    name : "Waypoints"
   },
   [OBJECTS.FL] : {
     icon : "fa fa-plane",

@@ -18,4 +18,5 @@
 .toolbar-geo .Select {
   display: inline-block;
   width: 200px;
+  outline: none;
 }

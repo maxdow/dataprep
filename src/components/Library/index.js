@@ -1,18 +1,26 @@
 import React, { Component } from "react"
 import SearchInput, {createFilter} from "react-search-input"
+import {OBJECTS} from "../../datatypes.constants.js"
 
 import "react-search-input/react-search-input.css"
-
 import "./library.css";
 
-const ObjectCategory = ({objectType}) => (
+const mappingObjectKeyToName = (key) => {
+  if(key === OBJECTS.WP) {
+    return "Waypoints"
+  } else {
+    return "..."
+  }
+}
+
+
+
+const ObjectCategory = ({objectType, data}) => (
   <div>
     <div className="library-object-header">Waypoints</div>
     <div className="library-object-content">
       <ul>
-        <li>WP1</li>
-        <li>WP2</li>
-        <li>WP3</li>
+        {data.map((elm) => <li>{`${elm.groupName} (${elm.data.length} items)`}</li>)}
       </ul>
     </div>
   </div>
@@ -29,7 +37,7 @@ export default class LibraryComponent extends Component {
         }} />
       </div>
       <div className="library-content">
-        <ObjectCategory objectType={"WP"} />
+        <ObjectCategory objectType={OBJECTS.WP} data={this.props.data.get(OBJECTS.WP).toJS()} />
       </div>
     </div>
   }
