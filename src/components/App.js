@@ -4,8 +4,8 @@ import DataEditor from "../containers/DataEditor.container"
 import ToolBarEditor from "../containers/ToolbarEditor.container"
 import ToolBarGeo from "../containers/ToolbarGeo.container"
 import Library from "../containers/Library.container.js"
+import MapEditor from "../containers/MapEditor.container.js"
 import ToolbarActionComponent from "./ToolbarActions"
-import MapEditor from "./MapEditor/MapEditor.component.js"
 
 
 import "./commun.css"

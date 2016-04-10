@@ -8,18 +8,18 @@ export const dataSample = {
             data: [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
-                    [WP_DATATYPES.TYPE_LAT]: 1252344.271424327,
-                    [WP_DATATYPES.TYPE_LNG]: 2661231.5767766964,
+                    [WP_DATATYPES.TYPE_LAT]: 1000000,
+                    [WP_DATATYPES.TYPE_LNG]: 1500000,
                     [WP_DATATYPES.TYPE_FL]: 100
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP2",
-                    [WP_DATATYPES.TYPE_LAT]: 1000000,
-                    [WP_DATATYPES.TYPE_LNG]: 2000000,
+                    [WP_DATATYPES.TYPE_LAT]: 0,
+                    [WP_DATATYPES.TYPE_LNG]: 0,
                     [WP_DATATYPES.TYPE_FL]: 500
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP3",
                     [WP_DATATYPES.TYPE_LAT]: 1100000,
-                    [WP_DATATYPES.TYPE_LNG]: 2500000,
+                    [WP_DATATYPES.TYPE_LNG]: 1700000,
                     [WP_DATATYPES.TYPE_FL]: 50
                 }
             ]
@@ -30,13 +30,13 @@ export const dataSample = {
             data: [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
-                    [WP_DATATYPES.TYPE_LAT]: 1352344.271424327,
-                    [WP_DATATYPES.TYPE_LNG]: 2561231.5767766964,
+                    [WP_DATATYPES.TYPE_LAT]: 1300000,
+                    [WP_DATATYPES.TYPE_LNG]: 2300000,
                     [WP_DATATYPES.TYPE_FL]: 100
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP2",
-                    [WP_DATATYPES.TYPE_LAT]: 1100000,
-                    [WP_DATATYPES.TYPE_LNG]: 2100000,
+                    [WP_DATATYPES.TYPE_LAT]: 1200000,
+                    [WP_DATATYPES.TYPE_LNG]: 3200000,
                     [WP_DATATYPES.TYPE_FL]: 500
                 }
             ]

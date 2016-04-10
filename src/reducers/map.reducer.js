@@ -2,16 +2,12 @@ import ol from "openlayers";
 import {dataSample,defaultDataSample} from "./datasample"
 import {OBJECTS,WP_DATATYPES} from "../datatypes.constants.js"
 
-const data = {
-   [OBJECTS.WP]: new ol.Collection(dataSample[OBJECTS.WP].map(waypointDataToFeature))
-};
+import { getData , waypointGroupToCollection } from "../helpers"
 
-function waypointDataToFeature(waypointData){
-  return new ol.Feature({
-          geometry: new ol.geom.Point([waypointData[WP_DATATYPES.TYPE_LNG],waypointData[WP_DATATYPES.TYPE_LAT]]),
-          name: waypointData[WP_DATATYPES.NAME]
-        });
-}
+
+const data = {
+   [OBJECTS.WP]: []
+};
 
 
 const defaultData = {
@@ -22,7 +18,19 @@ const defaultData = {
 };
 
 export default function mapReducer(state=data, action) {
-  console.log(action);
+  console.log(action,state);
+  if(action.type === "VIEW_ELM") {
+    if(action.data.elmtype === WP_DATATYPES) {
+      return [];
+      /*return {
+        [OBJECTS.WP]: new ol.Collection(getData[OBJECTS.WP].map(waypointDataToFeature))
+      }*/
+    } else {
+      return data;
+    }
+  } else {
+    return data;
+  }
   /*switch(action.type) {
     case "UPDATE_ELM" : {
       let {index,elmtype,datatype,value} = action.data;
@@ -45,5 +53,4 @@ export default function mapReducer(state=data, action) {
     return state;
 
   }*/
-  return data;
 }

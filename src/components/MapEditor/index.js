@@ -1,33 +1,33 @@
 import React, { Component } from "react";
-import { connect } from "react-redux"
 
 import ol from "openlayers";
 require("openlayers/css/ol.css");
 require("./mapeditor.css");
 
 import {OBJECTS,WP_DATATYPES} from "../../datatypes.constants.js"
+import {waypointGroupToCollection} from "../../helpers"
 
-
-
-
+function dataToVector(data,vector){
+  return vector ;
+}
 
 class MapEditorComponent extends Component {
   constructor(props) {
     super(props);
 
-
-
-    /*[1,2,3].forEach(() => {
-      this.vectorSource.addFeature(new ol.Feature({
-        geometry: new ol.geom.Point([16,48])
-      }));
-    });*/
-    console.log(this.props.waypoints)
+    //console.log(this.props.waypoints)
     // keep a pointer on class handle
     const handleAddElement = this.handleAddElement.bind(this,props);
 
+    var iconFeature = new ol.Feature({
+      geometry: new ol.geom.Point([0, 0]),
+      name: 'Null Island',
+      population: 4000,
+      rainfall: 500
+    });
+
     this.vectorSource = new ol.source.Vector({
-      features : this.props.waypoints
+      features : [iconFeature]
     });
 
     const vectorLayer = new ol.layer.Vector({source: this.vectorSource});
@@ -73,49 +73,23 @@ class MapEditorComponent extends Component {
       [WP_DATATYPES.TYPE_LAT]:event.coordinate[1]
     })*/
   }
-
+  componentWillReceiveProps(nextProps){
+    this.vectorSource.clear(true);
+    this.vectorSource.addFeatures(waypointGroupToCollection(nextProps.data));
+  }
   componentDidMount() {
     this.map.setTarget(this.refs.target);
   }
+  shouldComponentUpdate() {
+    //console.log("render")
+    this.map.render();
+    return false; // because react is just a wrapper for ol
+  }
 
   render(){
-    //redraw()
     return <div className="mapeditor" ref="target"></div>
   }
 }
 
 
-
-
-
-
-
-const addElementAction = (data) => {
-  return {
-    type: "ADD_ELM_MAP",
-    data
-  }
-}
-
-
-const mapStateToProps = (state) => {
-  //console.log(state)
-  return {
-    waypoints: state.dataMap[OBJECTS.WP]
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAddElement: (elmtype,data) => {
-      dispatch(addElementAction({elmtype,data}))
-    }
-  }
-}
-
-const MapEditor = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MapEditorComponent)
-
-export default MapEditor
+export default MapEditorComponent
