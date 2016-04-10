@@ -4,7 +4,7 @@ const defaultState = {
   editMode : false,
   deleteMode : false,
   currentElementType : null,
-  dataSelection : null, // {elmtype, idElement}
+  dataSelection : {idElement:null}, // {elmtype, idElement}
   currentView : []
 }
 //

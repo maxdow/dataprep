@@ -2,13 +2,20 @@ import { connect } from "react-redux"
 
 import DataEditorComponent from "../components/DataEditor"
 
+/**
+ * Retrieve data from the main collection
+ */
+function getData(data,elmtype,id){
+  const collection = data.get(elmtype);
+  return collection ? collection.find((elm) => elm.get("id") === id) : null
+}
 
 const mapStateToProps = (state) => {
   const currentElm = state.editor.currentElementType;
   console.log(state.data.get(currentElm))
   return {
     currentElm,
-    data : currentElm ? state.data.get(currentElm).find((elm) => elm.get("id") === state.editor.dataSelection.idElement) : []
+    data : getData(state.data,currentElm,state.editor.dataSelection.idElement)
   }
 }
 
