@@ -3,7 +3,8 @@ import {OBJECTS} from "../datatypes.constants.js";
 const defaultState = {
   editMode : false,
   deleteMode : false,
-  selectedElementType : OBJECTS.WP,
+  currentElementType : null,
+  dataSelection : null, // {elmtype, idElement}
   currentView : []
 }
 //
@@ -16,7 +17,12 @@ export default function editorReducer(state=defaultState,action){
     case "DELETE_MODE" :
       return Object.assign({},state,{deleteMode:!state.deleteMode});
     case "SELECT_ELM" :
-      return Object.assign({},state,{selectedElementType:action.data.elmtype});
+      return Object.assign({},state,{currentElementType:action.data.elmtype});
+    case "VIEW_ELM" :
+      return Object.assign({},state,{
+        currentElementType:action.data.elmtype,
+        dataSelection:action.data
+      });
     default :
       return state;
   }

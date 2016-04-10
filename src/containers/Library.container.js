@@ -1,17 +1,22 @@
 import { connect } from "react-redux"
 
 import LibraryComponent from "../components/Library"
-//import {changeView} from "../actions"
+import {selectElement} from "../actions"
 
 
 const mapStateToProps = (state) => {
   return {
-    data : state.data
+    data : state.data,
+    selection : state.editor.dataSelection
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    onSelectItem : (elmtype, idElement) => {
+      dispatch(selectElement({elmtype, idElement}));
+    }
+  }
 }
 
 const Library = connect(

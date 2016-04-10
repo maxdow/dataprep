@@ -11,3 +11,10 @@ export const changeView = (data) => {
     data // {coords}
   }
 }
+
+export const selectElement = (data) => {
+  return {
+    type: "VIEW_ELM",
+    data // {elmtype, idElement}
+  }
+}

@@ -6,7 +6,7 @@ import {selectElementAction} from "../actions"
 
 const mapStateToProps = (state) => {
   return {
-    currentElm : state.editor.selectedElementType
+    currentElm : state.editor.currentElementType
   }
 }
 

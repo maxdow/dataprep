@@ -22,9 +22,7 @@ class CanvasEditor extends Component {
       height:this.props.canvasHeight
     };
 
-    return <svg height={this.props.canvasHeight} width={this.props.canvasWidth} >
-
-
+    return <svg height={canvas.height} width={canvas.width} >
 
       <Trajectory waypoints={waypoints} canvas={canvas}
       onUpdate={this.props.onUpdate.bind(this,OBJECTS.WP)}

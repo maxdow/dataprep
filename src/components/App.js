@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import CanvasEditor from "./CanvasEditor.component.js"
+import DataEditor from "../containers/DataEditor.container"
 import ToolBarEditor from "../containers/ToolbarEditor.container"
 import ToolBarGeo from "../containers/ToolbarGeo.container"
 import Library from "../containers/Library.container.js"
@@ -15,7 +15,7 @@ const App = () => (
   <div className="wrapper">
     <div className="layout-editors">
       <ToolBarEditor/>
-      <CanvasEditor />
+      <DataEditor />
       <ToolBarGeo />
       <MapEditor />
     </div>

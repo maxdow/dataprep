@@ -4,6 +4,7 @@ export const dataSample = {
     [OBJECTS.WP]: [
         {
             groupName: "Test",
+            id : 12,
             data: [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
@@ -25,6 +26,7 @@ export const dataSample = {
         },
         {
             groupName: "Test 2",
+            id : 123,
             data: [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",

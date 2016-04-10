@@ -13,12 +13,19 @@
 .toolbar-action-button {
   width: 48px;
   height: 48px;
-  border:1px solid #555;
+  border:1px solid #fefefe;
   border-radius: 15px;
-  margin: 0 auto;
+  margin: 5px auto;
   cursor: pointer;
   outline: none;
+  background: #fefefe;
+  box-shadow: 0 0 5px #aaa;
 }
 .toolbar-action-button:hover {
-  background: #aaa;
+  background: #fafafa;
+}
+.toolbar-action-button:active {
+  box-shadow: 0 0 5px #555;
+  border:1px solid #fefefe;
+
 }

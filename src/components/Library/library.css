@@ -28,3 +28,18 @@
  font-family: "Helvetica";
  font-style: italic;
 }
+
+.library-object-content ul{
+  /*list-style: none;*/
+}
+
+.library-object-item{
+  cursor: pointer;
+}
+
+.library-object-item:hover{
+  background: #ccc;
+}
+.library-object-item--selected {
+  background: #ddd
+}
