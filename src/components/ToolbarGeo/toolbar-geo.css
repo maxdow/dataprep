@@ -1,7 +1,6 @@
 .toolbar-geo {
   background: #eee;
-  border: 1px solid #aaa;
-  border-radius: 5px 5px 0 0 ;
+  border-top: 1px solid #aaa;
   padding: 2px;
 }
 

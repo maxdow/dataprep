@@ -23,9 +23,9 @@ const configByElmType = {
 }
 
 const ItemEditor = ({elmType, onClick, currentElm}) => (
-    <li><button onClick={onClick.bind(null,elmType)}
-      className={`toolbar-editor-button ${currentElm === elmType ? "toolbar-editor-button--active" : ""}`}>
-      <i className={configByElmType[elmType].icon}></i> {configByElmType[elmType].name}</button>
+    <li onClick={onClick.bind(null,elmType)}
+      className={`toolbar-editor-tab ${currentElm === elmType ? "toolbar-editor-tab--active" : ""}`}>
+      <i className={configByElmType[elmType].icon}></i> {configByElmType[elmType].name}
     </li>
   )
 
