@@ -6,16 +6,16 @@ import {OBJECTS,WP_DATATYPES} from "./datatypes.constants.js"
  */
 export function getData(data,elmtype,id){
   const collection = data.get(elmtype);
-  return collection ? collection.find((elm) => elm.get("id") === id) : null
+  return collection ? collection.find((elm) => elm.get("id") === id).toJS() : null
 }
 
-export function waypointGroupToCollection(waypointGroup){
-  return waypointGroup.get("data").map(waypointToFeature).toJS()
+export function waypointGroupToCollection(waypointGroup = {data :[]}){
+  return waypointGroup.data.map(waypointToFeature)
 }
 
 export function waypointToFeature(waypoint){
   return new ol.Feature({
-          geometry: new ol.geom.Point([waypoint.get(WP_DATATYPES.TYPE_LNG),waypoint.get(WP_DATATYPES.TYPE_LAT)]),
-          name: waypoint.get(WP_DATATYPES.NAME)
+          geometry: new ol.geom.Point([waypoint[WP_DATATYPES.TYPE_LNG],waypoint[WP_DATATYPES.TYPE_LAT]]),
+          name: waypoint[WP_DATATYPES.NAME]
         });
 }

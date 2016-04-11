@@ -11,13 +11,13 @@ const Infos = function(props) {
   const {x, y, data} = props;
 
   return <g>
-        <text x={x} y={y}>{data.get(WP_DATATYPES.TYPE_NAME)}</text>
+        <text x={x} y={y}>{data[WP_DATATYPES.TYPE_NAME]}</text>
           <text x={x} y={y+15}>{"FL"}</text>
-          <EditableText x={x + 25} y={y+15} value={data.get(WP_DATATYPES.TYPE_FL)} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_FL)}/>
+          <EditableText x={x + 25} y={y+15} value={data[WP_DATATYPES.TYPE_FL]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_FL)}/>
         {props.isHovered || props.isEdited ?
         <g>
-          <EditableText x={x} y={y + 30} value={data.get(WP_DATATYPES.TYPE_LAT)} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LAT)}/>
-          <EditableText x={x} y={y + 45} value={data.get(WP_DATATYPES.TYPE_LNG)} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LNG)}/>
+          <EditableText x={x} y={y + 30} value={data[WP_DATATYPES.TYPE_LAT]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LAT)}/>
+          <EditableText x={x} y={y + 45} value={data[WP_DATATYPES.TYPE_LNG]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LNG)}/>
         </g> : null}
       </g>
 }
@@ -31,7 +31,7 @@ export default class Waypoint extends Component {
       isEdited:false,
       isDragged:false
   };
-    this.y = getPositionYWaypoint(props.data.get(WP_DATATYPES.TYPE_FL),props.canvasHeight);
+    this.y = getPositionYWaypoint(props.data[WP_DATATYPES.TYPE_FL],props.canvasHeight);
     this.mouseDown = false;
 
   }
@@ -42,7 +42,7 @@ export default class Waypoint extends Component {
     document.removeEventListener("mousedown", this.handleDocumentMouseDown, false);
   }
   componentWillReceiveProps(nextProps) {
-    this.y = getPositionYWaypoint(nextProps.data.get(WP_DATATYPES.TYPE_FL),nextProps.canvasHeight);
+    this.y = getPositionYWaypoint(nextProps.data[WP_DATATYPES.TYPE_FL],nextProps.canvasHeight);
   }
 
   handleDocumentMouseMove = (event) => {

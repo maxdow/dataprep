@@ -20,7 +20,7 @@ import "./toolbar-action.css"
 export default class ToolbarActionComponent extends Component {
   render() {
     return <div className="toolbar-action">
-      <button className="toolbar-action-button"><span>add</span><i className="fa fa-2x fa-plus"></i></button>
+      <button className="toolbar-action-button"><span>new</span><i className="fa fa-2x fa-plus"></i></button>
       <button className="toolbar-action-button"><span>export</span><i className="fa fa-2x fa-download"></i></button>
     </div>
   }

@@ -10,16 +10,16 @@ import Trajectory from "./trajectory.js";
 
 
 
-const FlightPlan = ({data=[],size}) => (
+const FlightPlan = ({data,size, onUpdate}) => (
 
-  data.length ? <svg height={canvas.height} width={canvas.width} >
+  data.data.length ? <svg height={size.height} width={size.width} >
 
-    <Trajectory waypoints={data} canvas={size}
-    onUpdate={this.props.onUpdate.bind(this,OBJECTS.WP)}
+    <Trajectory flightdata={data} canvas={size}
+    onUpdate={/*onUpdate.bind(this,OBJECTS.WP)*/()=>{}}
     onWPClick={()=>{}/*this.handleWPClick.bind(this)*/}
     />
 
-  </svg> : <span>...</span>
+  </svg> : <span>{console.log(data)}</span>
 
 )
 export default FlightPlan ;
