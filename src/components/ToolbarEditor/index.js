@@ -16,7 +16,7 @@ const configByElmType = {
     icon : "fa fa-map-marker",
     name : "Waypoints"
   },
-  [OBJECTS.FP] : {
+  [OBJECTS.FPL] : {
     icon : "fa fa-plane",
     name : "FlightPlan"
   }
@@ -36,7 +36,7 @@ export default class ToolBarEditorComponent extends Component {
     <div className="toolbar-editor">
       <ul className="toolbar">
         <ItemEditor onClick={this.props.onSelectElement} elmType={OBJECTS.WP} currentElm={this.props.currentElm}/>
-        <ItemEditor onClick={this.props.onSelectElement} elmType={OBJECTS.FP} currentElm={this.props.currentElm}/>
+        <ItemEditor onClick={this.props.onSelectElement} elmType={OBJECTS.FPL} currentElm={this.props.currentElm}/>
       </ul>
     </div>
     )

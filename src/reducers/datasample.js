@@ -37,7 +37,7 @@ export const dataSample = {
             ]
         }
     ],
-    [OBJECTS.FP] : [
+    [OBJECTS.FPL] : [
         {
             name : "FlightPlan test",
             id:1,

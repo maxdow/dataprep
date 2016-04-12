@@ -19,7 +19,7 @@ export default class DataEditorComponent extends Component {
       <div className="dataeditor">
         {
           this.props.currentElm === OBJECTS.WP ? <WaypointEditor data={this.props.data}/> :
-          this.props.currentElm === OBJECTS.FP ? <FlightPlan size={canvasSize} data={this.props.data}/> :
+          this.props.currentElm === OBJECTS.FPL ? <FlightPlan size={canvasSize} data={this.props.data}/> :
           "Select an element from the library or create a new one"
         }
       </div>

@@ -7,7 +7,7 @@ import "./library.css";
 
 const mappingObjectKeyToName = (key) => {
   return key === OBJECTS.WP ? "Waypoints" :
-         key === OBJECTS.FP ? "FlightPlans" :
+         key === OBJECTS.FPL ? "FlightPlans" :
                               "..."
 
 }
@@ -54,7 +54,7 @@ export default class LibraryComponent extends Component {
         {...this.props}
         />
         <ObjectCategory
-        objectType={OBJECTS.FP}
+        objectType={OBJECTS.FPL}
         {...this.props}
         />
       </div>
