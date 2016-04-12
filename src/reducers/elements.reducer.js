@@ -54,11 +54,12 @@ export default function elementsReducer(state=data, action) {
 }
 function addElement(state,dataAction) {
   let {data={},selection} = dataAction;
-  var t= state.updateIn([selection.elmtype],
-          (listElement) => listElement.find(item => item.get("id") === selection.idElement)
-                           .get("data").push(defaultData[selection.elmtype].merge(data))
-          )
-  console.log(t);
-  return state;
+  console.log(dataAction);
+  return state.updateIn([selection.elmtype],
+          (listElement) => listElement.update(listElement.findIndex(item => item.get("id") === selection.idElement),
+                           (element) => element.update("data",
+                              (dataElm) => dataElm.push(defaultData[selection.elmtype].merge(data))
+                           )
+          ))
 }
 

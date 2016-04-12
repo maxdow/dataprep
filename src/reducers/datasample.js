@@ -66,6 +66,11 @@ export const defaultDataSample = {
     [WP_DATATYPES.TYPE_NAME]: "WP__",
     [WP_DATATYPES.TYPE_LAT]: 10,
     [WP_DATATYPES.TYPE_LNG]: 10,
+  },
+  [OBJECTS.FPL] : {
+    [WP_DATATYPES.TYPE_NAME]: "WP__",
+    [WP_DATATYPES.TYPE_LAT]: 10,
+    [WP_DATATYPES.TYPE_LNG]: 10,
     [WP_DATATYPES.TYPE_FL]: 100
   }
 };
