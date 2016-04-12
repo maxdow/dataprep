@@ -44,7 +44,7 @@ class MapEditorComponent extends Component {
     this.map.addInteraction(this.interaction);
   }
   handleDrawEvent(event){
-    const coords = ol.proj.transform(event.feature.getGeometry().getCoordinates(), "EPSG:3857", "EPSG:4326");
+    const coords = event.feature.getGeometry().getCoordinates();//ol.proj.transform(event.feature.getGeometry().getCoordinates(), "EPSG:3857", "EPSG:4326");
     this.props.onAddElement(this.props.selection,{
       [WP_DATATYPES.TYPE_LNG]:coords[0],
       [WP_DATATYPES.TYPE_LAT]:coords[1]

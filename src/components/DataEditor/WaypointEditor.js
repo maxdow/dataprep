@@ -6,10 +6,10 @@ import {OBJECTS,WP_DATATYPES} from "../../datatypes.constants.js"
 
 const WaypointEditor = ({data}) => {
 
-  return <div>
+  return <div className="waypoint-editor">
     <div>Group Name : {data.name}</div>
 
-    <ul>
+    <ul className="waypoint-editor-list">
       {data.data.map((waypoint,i) => <li key={i}>
         {waypoint[WP_DATATYPES.TYPE_NAME]} - {waypoint[WP_DATATYPES.TYPE_LAT]} / {waypoint[WP_DATATYPES.TYPE_LNG]}
         </li>)}

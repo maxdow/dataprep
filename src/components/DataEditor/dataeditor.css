@@ -2,3 +2,15 @@
   min-height: 300px;
   height: 300px;
 }
+
+.waypoint-editor {
+  display: flex;
+  margin: 0;
+  padding : 0;
+  height: 100%
+}
+
+.waypoint-editor-list{
+  overflow-y: auto;
+  flex: 1;
+}
