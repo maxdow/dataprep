@@ -16,12 +16,16 @@ class MapEditorComponent extends Component {
     super(props);
 
     this.vectorSource = new ol.source.Vector();
-
     this.map = new ol.Map({
       size:[700,300],
       layers: [
-        new ol.layer.Tile({
+        /*new ol.layer.Tile({
           source: new ol.source.MapQuest({layer: "sat"})
+        }),*/
+        new ol.layer.Tile({
+          source: new ol.source.Stamen({
+            layer: "toner-lite"
+          })
         }),
         new ol.layer.Vector({source: this.vectorSource})
       ],
