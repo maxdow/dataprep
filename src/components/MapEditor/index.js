@@ -15,22 +15,7 @@ class MapEditorComponent extends Component {
   constructor(props) {
     super(props);
 
-    //console.log(this.props.waypoints)
-    // keep a pointer on class handle
-    const handleAddElement = this.handleAddElement.bind(this,props);
-
-    var iconFeature = new ol.Feature({
-      geometry: new ol.geom.Point([0, 0]),
-      name: 'Null Island',
-      population: 4000,
-      rainfall: 500
-    });
-
-    this.vectorSource = new ol.source.Vector({
-      features : [iconFeature]
-    });
-
-    const vectorLayer = new ol.layer.Vector({source: this.vectorSource});
+    this.vectorSource = new ol.source.Vector();
 
     this.map = new ol.Map({
       size:[700,300],
@@ -38,7 +23,7 @@ class MapEditorComponent extends Component {
         new ol.layer.Tile({
           source: new ol.source.MapQuest({layer: "sat"})
         }),
-        vectorLayer
+        new ol.layer.Vector({source: this.vectorSource})
       ],
       view: new ol.View({
         center: [0,0],
@@ -50,7 +35,7 @@ class MapEditorComponent extends Component {
 
   }
   addInteraction = (interactionType) => {
-    //remove intercation
+    //remove interaction
     this.interaction = new ol.interaction.Draw({
       features: this.props.waypoints,
       type: "Point"
@@ -60,18 +45,10 @@ class MapEditorComponent extends Component {
   }
   handleDrawEvent(event){
     const coords = ol.proj.transform(event.feature.getGeometry().getCoordinates(), "EPSG:3857", "EPSG:4326");
-    this.props.onAddElement(OBJECTS.WP,{
+    this.props.onAddElement(this.props.selection,{
       [WP_DATATYPES.TYPE_LNG]:coords[0],
       [WP_DATATYPES.TYPE_LAT]:coords[1]
     })
-  }
-  handleAddElement(props,event) {
-    /*console.log(props)
-    console.log(event.coordinate);
-    props.onAddElement(OBJECTS.WP,{
-      [WP_DATATYPES.TYPE_LNG]:event.coordinate[0],
-      [WP_DATATYPES.TYPE_LAT]:event.coordinate[1]
-    })*/
   }
   componentWillReceiveProps(nextProps){
     this.vectorSource.clear(true);

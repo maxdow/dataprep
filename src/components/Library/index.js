@@ -28,9 +28,9 @@ const ObjectCategory = ({objectType, data, onSelectItem, selection}) => (
     <div className="library-object-header">{mappingObjectKeyToName(objectType)}</div>
     <div className="library-object-content">
       <ul>
-        {data.get(objectType).toJS().map((elm) => <ObjectElement elm={elm}
+        {data.get(objectType).toJS().map((elm,i) => <ObjectElement elm={elm}
           selected={isSelected(selection,elm,objectType)}
-          key={elm.id}
+          key={i}
           onClick={onSelectItem.bind(null,objectType,elm.id)}
         />)}
       </ul>

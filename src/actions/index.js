@@ -18,3 +18,9 @@ export const selectElement = (data) => {
     data // {elmtype, idElement}
   }
 }
+export const addElement = (data) => {
+  return {
+    type: "ADD_ELM",
+    data
+  }
+}

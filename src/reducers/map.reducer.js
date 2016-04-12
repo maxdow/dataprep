@@ -18,19 +18,20 @@ const defaultData = {
 };
 
 export default function mapReducer(state=data, action) {
-  console.log(action,state);
-  if(action.type === "VIEW_ELM") {
+  //console.log(action,state);
+  return state
+  /*if(action.type === "VIEW_ELM") {
     if(action.data.elmtype === WP_DATATYPES) {
       return [];
       /*return {
         [OBJECTS.WP]: new ol.Collection(getData[OBJECTS.WP].map(waypointDataToFeature))
       }*/
-    } else {
+    /*} else {
       return data;
     }
   } else {
     return data;
-  }
+  }*/
   /*switch(action.type) {
     case "UPDATE_ELM" : {
       let {index,elmtype,datatype,value} = action.data;
