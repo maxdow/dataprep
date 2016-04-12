@@ -19,9 +19,6 @@ class MapEditorComponent extends Component {
     this.map = new ol.Map({
       size:[700,300],
       layers: [
-        /*new ol.layer.Tile({
-          source: new ol.source.MapQuest({layer: "sat"})
-        }),*/
         new ol.layer.Tile({
           source: new ol.source.Stamen({
             layer: "toner-lite"
@@ -35,7 +32,7 @@ class MapEditorComponent extends Component {
       })
     });
 
-    this.addInteraction();
+    //this.addInteraction();
 
   }
   addInteraction = (interactionType) => {
@@ -55,8 +52,20 @@ class MapEditorComponent extends Component {
     })
   }
   componentWillReceiveProps(nextProps){
-    this.vectorSource.clear(true);
-    this.vectorSource.addFeatures(waypointGroupToCollection(nextProps.data));
+    if(this.props.data !== nextProps.data){
+      this.vectorSource.clear(true);
+      this.vectorSource.addFeatures(waypointGroupToCollection(nextProps.data));
+    }
+    if(nextProps.currentElm) {
+      if(!this.interaction) {
+        this.addInteraction();
+      }
+
+    } else {
+      this.map.removeInteraction(this.interaction);
+      this.interaction = null ;
+    }
+
   }
   componentDidMount() {
     this.map.setTarget(this.refs.target);
