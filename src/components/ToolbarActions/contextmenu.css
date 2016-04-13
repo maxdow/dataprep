@@ -1,0 +1,41 @@
+.context-menu {
+  position: fixed;
+  background: #fff;
+  padding: 10px;
+  visibility: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.35);
+  margin-top: 0;
+}
+
+.context-menu::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  z-index: -1;
+}
+
+.context-menu__actif {
+  visibility: visible;
+}
+.context-menu--item {
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+.context-menu--item:hover {
+  /*background: #eee;*/
+  cursor: pointer;
+  background: linear-gradient(to bottom, #f1f1f1 0%, #fbfbfb 100%);
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #dedede;
+}

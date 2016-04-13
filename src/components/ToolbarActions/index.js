@@ -13,15 +13,68 @@
  *
  */
 import React, { Component } from "react";
+import {OBJECTS} from "../../datatypes.constants.js"
 
 import "../toolbar.css"
 import "./toolbar-action.css"
+import "./contextmenu.css"
+
+
+
+//The context-menu to be triggered
+const Menu = ({position,visible,items,onClick}) => (
+  <ul
+    style={position}
+    className={"context-menu " + (visible ? "context-menu__actif" : "")}>
+    {items.map((item,i) => <li className="context-menu--item" key={i} onClick={onClick.bind(null,item.action)}>{item.text}</li>)}
+  </ul>
+);
+
+
 
 export default class ToolbarActionComponent extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      contextMenuVisible : true,
+      contextmenuPosition :null
+    };
+    this.contextMenuContent = [
+                                  {
+                                    action : OBJECTS.WP,
+                                    text : "Waypoints Group"
+                                  },
+                                  {
+                                    action : OBJECTS.FPL,
+                                    text : "FlightPlan"
+                                  }
+                              ]
+
+  }
+
+  handleMenuClick(action){
+    console.log(action);
+    this.setState({
+      contextMenuVisible : false
+    })
+  }
+
+  handleClickAdd(event){
+    this.setState({
+      contextMenuVisible : true,
+      contextmenuPosition :{
+          top : event.pageY,
+          left : event.pageX
+        }
+    })
+  }
+
   render() {
     return <div className="toolbar-action">
-      <button className="toolbar-action-button"><span>new</span><i className="fa fa-2x fa-plus"></i></button>
+      <button onClick={this.handleClickAdd.bind(this)} className="toolbar-action-button"><span>new</span><i className="fa fa-2x fa-plus"></i></button>
       <button className="toolbar-action-button"><span>export</span><i className="fa fa-2x fa-download"></i></button>
+      <Menu position={this.state.contextmenuPosition} visible={this.state.contextMenuVisible} items={this.contextMenuContent} onClick={this.handleMenuClick.bind(this)}/>
     </div>
   }
 }

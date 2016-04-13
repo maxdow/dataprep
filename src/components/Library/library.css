@@ -2,7 +2,9 @@
   border: 1px solid #aaa;
   border-radius: 5px;
   padding: 5px;
+  background: #fefefe;
 }
+
 .library-header {
   display: flex;
   padding-bottom: 4px;

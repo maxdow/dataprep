@@ -10,8 +10,6 @@
 }
 .layout-library {
   min-width: 400px;
-}
-
-.layout-editors , .layout-library {
-  display: inline-block;
+  min-height: 100%;
+  display: flex;
 }

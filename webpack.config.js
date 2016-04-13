@@ -24,6 +24,7 @@ module.exports = {
       include: path.join(__dirname, "src")
     },
     {test: /\.css$/, loader: "style-loader!css-loader"},
+    {test: /\.png$/, loader: "file-loader?name=[name].[ext]" },
     {test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader?name=fonts.[ext]" }
     ],
     noParse: /dist\/ol.js/
