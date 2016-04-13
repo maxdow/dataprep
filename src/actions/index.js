@@ -24,3 +24,11 @@ export const addElement = (data) => {
     data
   }
 }
+
+
+export const updateElement = (data) => {
+  return {
+    type: "UPDATE_ELM",
+    data
+  }
+}

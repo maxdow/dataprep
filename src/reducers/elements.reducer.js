@@ -28,19 +28,13 @@ export default function elementsReducer(state=data, action) {
 
   switch(action.type) {
     case "UPDATE_ELM" : {
-      let {index,elmtype,datatype,value} = action.data;
-      return state.updateIn([elmtype],
-        (list)=>list.update(index,
-          (data) => data.set(datatype,
-            filter(elmtype,datatype,value))
-          )
-        );
+      return updateElment(state,action.data);
     }
     case "ADD_ELM" : {
-      return addElement(state,action.data)
+      return addElement(state,action.data);
     }
     case "ADD_ELM_MAP" : {
-      return addElement(state,action.data)
+      return addElement(state,action.data);
     }
     case "DELETE_ELM" : {
       let {elmtype,index} = action.data;
@@ -52,6 +46,25 @@ export default function elementsReducer(state=data, action) {
   }
 
 }
+
+
+function updateElment(state,dataAction){
+  let {index,elmtype,datatype,value,idElement} = dataAction;
+  return state.updateIn([elmtype],
+    (listElement) => listElement.update(listElement.findIndex(item => item.get("id") === idElement),
+      (element)=>element.update("data",
+        (dataElm) => dataElm.update(index,
+          (dataItem) => dataItem.set(datatype,
+            filter(elmtype,datatype,value)
+          )
+        )
+      )
+    )
+  );
+}
+
+
+
 function addElement(state,dataAction) {
   let {data={},selection} = dataAction;
   console.log(dataAction);
