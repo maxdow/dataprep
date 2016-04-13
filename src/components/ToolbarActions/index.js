@@ -37,7 +37,7 @@ export default class ToolbarActionComponent extends Component {
     super(props);
 
     this.state = {
-      contextMenuVisible : true,
+      contextMenuVisible : false,
       contextmenuPosition :null
     };
     this.contextMenuContent = [

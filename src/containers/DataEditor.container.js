@@ -16,7 +16,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    onUpdate : function(elmtype,datatype,value){
+      console.log(elmtype,datatype,value);
+    }
   }
 }
 
