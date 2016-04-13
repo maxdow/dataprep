@@ -11,11 +11,20 @@ function dataToVector(data,vector){
   return vector ;
 }
 
+
+const iconStyleWaypoint = new ol.style.Style({
+  image: new ol.style.Icon(({
+    scale :0.5,
+    src: "../../assets/waypoint.png"
+  }))
+});
+
 class MapEditorComponent extends Component {
   constructor(props) {
     super(props);
 
     this.vectorSource = new ol.source.Vector();
+
     this.map = new ol.Map({
       size:[700,300],
       layers: [
@@ -24,7 +33,7 @@ class MapEditorComponent extends Component {
             layer: "toner-lite"
           })
         }),
-        new ol.layer.Vector({source: this.vectorSource})
+        new ol.layer.Vector({source: this.vectorSource,style:iconStyleWaypoint})
       ],
       view: new ol.View({
         center: [0,0],
@@ -39,7 +48,8 @@ class MapEditorComponent extends Component {
     //remove interaction
     this.interaction = new ol.interaction.Draw({
       features: this.props.waypoints,
-      type: "Point"
+      type: "Point",
+      style:iconStyleWaypoint
     });
     this.interaction.on("drawend",this.handleDrawEvent.bind(this))
     this.map.addInteraction(this.interaction);
