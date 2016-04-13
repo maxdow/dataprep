@@ -2,24 +2,65 @@ import React, { Component } from "react";
 
 import Trajectory from "./trajectory.js";
 import {OBJECTS} from "../../datatypes.constants.js"
-  /*handleWPClick(index) {
-    if(this.props.isDeleteMode) {
-      this.props.onDeleteWP(index); //todo remove elm
-    }
-  }*/
+
+import "./fpl.css"
 
 
 
 const FlightPlan = ({data,size, onUpdate}) => (
+  <div className="fpl">
 
-  data.data.length ? <svg height={size.height} width={size.width} >
+    <div className="fpl-form">
 
-    <Trajectory flightdata={data} canvas={size}
-    onUpdate={onUpdate.bind(this,OBJECTS.FPL,data.id)}
-    onWPClick={()=>{}/*this.handleWPClick.bind(this)*/}
-    />
+    <div className="fpl-formleft">
+      <div className="fpl-input">
+        <label>ADEP</label>
+        <input value={data.adep}></input>
+      </div>
+      <div className="fpl-input">
+        <label>ETD</label>
+        <input value={data.etd}></input>
+      </div>
+      <div className="fpl-input">
+        <label>ADES</label>
+        <input value={data.adep}></input>
+      </div>
+      <div className="fpl-input">
+        <label>AADES</label>
+        <input value={data.aades}></input>
+      </div>
+    </div>
 
-  </svg> : <span>{console.log(data)}</span>
+    <div className="fpl-formright">
+      <div className="fpl-input">
+        <label>SPEED</label>
+        <input value={data.speed}></input>KT
+      </div>
+
+      <div className="fpl-input">
+      ETA
+      </div>
+
+      <div className="fpl-input">
+        <label>Cruising speed / level</label>
+        <input></input> /
+        <input></input>
+      </div>
+    </div>
+
+    </div>
+
+    <div className="fpl-draw">
+      {data.data.length ? <svg height={size.height} width={size.width} >
+
+          <Trajectory flightdata={data} canvas={size}
+          onUpdate={onUpdate.bind(this,OBJECTS.FPL,data.id)}
+          onWPClick={()=>{}/*this.handleWPClick.bind(this)*/}
+          />
+
+      </svg> : null}
+    </div>
+  </div>
 
 )
 export default FlightPlan ;

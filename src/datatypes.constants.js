@@ -8,6 +8,6 @@ export const WP_DATATYPES = {
   TYPE_FL   : "TYPE_FL",
   TYPE_LAT  : "TYPE_LAT",
   TYPE_LNG  : "TYPE_LNG",
-  MAX_FL_LVL : 550,
-  MIN_FL_LVL : 50
+  MAX_FL_LVL : 350,
+  MIN_FL_LVL : 0
 }

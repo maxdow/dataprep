@@ -1,0 +1,11 @@
+.fpl-form {
+  display: flex;
+}
+
+.fpl-formleft , .fpl-formright {
+  flex: 1;
+}
+
+.fpl-input label {
+  display: block;
+}
