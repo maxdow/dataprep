@@ -16,12 +16,17 @@ module.exports = {
     new HtmlPlugin({
       template: "./index.html",
       inject: "body"
-    })/*,
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        "NODE_ENV": JSON.stringify("production")
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({
-    compress: {
-        warnings: false
-    }
-})*/
+      compress: {
+          warnings: false
+      }
+    })
   ],
   module: {
     loaders: [{
