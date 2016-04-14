@@ -9,3 +9,13 @@
 .fpl-input label {
   display: block;
 }
+
+.fpl-input-adesdadep {
+  display: flex;
+}
+.fpl-input-adesdadep input {
+  width: 50px
+}
+.fpl-input-adesdadep--block {
+  margin: 0 4px;
+}

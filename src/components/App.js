@@ -5,7 +5,7 @@ import ToolBarEditor from "../containers/ToolbarEditor.container"
 import ToolBarGeo from "../containers/ToolbarGeo.container"
 import Library from "../containers/Library.container.js"
 import MapEditor from "../containers/MapEditor.container.js"
-import ToolbarActionComponent from "./ToolbarActions"
+import ToolbarAction from "../containers/ToolbarAction.container.js"
 
 
 import "./commun.css"
@@ -19,7 +19,7 @@ const App = () => (
       <ToolBarGeo />
       <MapEditor />
     </div>
-    <ToolbarActionComponent />
+    <ToolbarAction />
     <div className="layout-library">
       <Library/>
     </div>

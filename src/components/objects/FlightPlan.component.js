@@ -13,17 +13,26 @@ const FlightPlan = ({data,size, onUpdate}) => (
     <div className="fpl-form">
 
     <div className="fpl-formleft">
-      <div className="fpl-input">
-        <label>ADEP</label>
-        <input value={data.adep}></input>
+
+      <div className="fpl-input fpl-input-adesdadep">
+          <img src="../../../assets/plane-up-32.png"/>
+        <div className="fpl-input-adesdadep--block">
+          <label>ADEP</label>
+          <input  value={data.adep}></input>
+        </div>
+        <div className="fpl-input">
+          <label>ETD</label>
+          <input value={data.etd}></input>
+        </div>
       </div>
-      <div className="fpl-input">
-        <label>ETD</label>
-        <input value={data.etd}></input>
-      </div>
-      <div className="fpl-input">
-        <label>ADES</label>
-        <input value={data.adep}></input>
+
+
+      <div className="fpl-input fpl-input-adesdadep">
+        <img src="../../../assets/plane-land-32.png"/>
+        <div className="fpl-input-adesdadep--block">
+          <label>ADES</label>
+          <input  value={data.ades}></input>
+        </div>
       </div>
       <div className="fpl-input">
         <label>AADES</label>

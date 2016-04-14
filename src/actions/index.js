@@ -1,3 +1,9 @@
+
+// TODO
+// factor this
+// element could be object (wp , fpl ...)
+// item could be data from this element
+
 export const selectElementAction = (data) => {
   return {
     type: "SELECT_ELM",
@@ -25,6 +31,12 @@ export const addElement = (data) => {
   }
 }
 
+export const newElement = (data) => {
+  return {
+    type: "NEW_ELM",
+    data
+  }
+}
 
 export const updateElement = (data) => {
   return {
