@@ -3,9 +3,19 @@ import React, { Component } from "react";
 import Trajectory from "./trajectory.js";
 import {OBJECTS} from "../../datatypes.constants.js"
 
+import MaskedInput from "react-maskedinput"
 import "./fpl.css"
 
-
+const formatGeographyInput = () => {
+  /*
+  formatCharacters: {
+    'w': {
+      validate: function(char) { return /\w/.test(char) }
+      transform: function(char) { return char.toLowerCase() }
+    }
+  }
+   */
+}
 
 const FlightPlan = ({data,size, onUpdate}) => (
   <div className="fpl">
@@ -16,45 +26,43 @@ const FlightPlan = ({data,size, onUpdate}) => (
 
       <div className="fpl-input fpl-input-adesdadep">
           <img src="../../../assets/plane-up-32.png"/>
-        <div className="fpl-input-adesdadep--block">
+        <div className="fpl-input-adesdadep--block fpl-input-geo ">
           <label>ADEP</label>
-          <input  value={data.adep}></input>
+          <MaskedInput mask="11° 11' 11'' A" name="expiry" placeholder="11° 11' 11'' N" value={data.adep}/>
         </div>
         <div className="fpl-input">
           <label>ETD</label>
-          <input value={data.etd}></input>
+          <MaskedInput mask="1111/11/11 11:11" name="etd" placeholder="yyyy/MM/DD HH:MM" value={data.etd}/>
         </div>
       </div>
 
 
       <div className="fpl-input fpl-input-adesdadep">
         <img src="../../../assets/plane-land-32.png"/>
-        <div className="fpl-input-adesdadep--block">
+        <div className="fpl-input-adesdadep--block fpl-input-geo ">
           <label>ADES</label>
-          <input  value={data.ades}></input>
+          <MaskedInput mask="11° 11' 11'' A" name="expiry" placeholder="11° 11' 11'' N" value={data.ades}/>
         </div>
       </div>
-      <div className="fpl-input">
+      <div className="fpl-input fpl-input-geo ">
         <label>AADES</label>
         <input value={data.aades}></input>
       </div>
     </div>
 
     <div className="fpl-formright">
+
       <div className="fpl-input">
-        <label>SPEED</label>
+        <label>Cruising speed</label>
         <input value={data.speed}></input>KT
+        <label>Level</label>
+        <input value={data.level}></input>
       </div>
 
       <div className="fpl-input">
-      ETA
+      ETA : xx
       </div>
 
-      <div className="fpl-input">
-        <label>Cruising speed / level</label>
-        <input></input> /
-        <input></input>
-      </div>
     </div>
 
     </div>

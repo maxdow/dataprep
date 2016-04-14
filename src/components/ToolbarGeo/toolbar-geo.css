@@ -2,6 +2,7 @@
   background: #eee;
   border-top: 1px solid #aaa;
   padding: 2px;
+  display: flex;
 }
 
 .toolbar-geo-item {

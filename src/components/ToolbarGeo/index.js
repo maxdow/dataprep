@@ -21,6 +21,9 @@ export default class ToolBarGeoComponent extends Component {
   render() {
     return (
     <div className="toolbar-geo">
+      <button>ADEP</button>
+      <button>ADES</button>
+      <button>AADES</button>
       <div className="toolbar-geo-item">
         <span className="toolbar-geo-label">Zoom to</span>
         <Select
