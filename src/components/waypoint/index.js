@@ -3,6 +3,7 @@ import {WP_DATATYPES} from "../../datatypes.constants"
 
 import Triangle from "../triangle.component.js"
 import EditableText from "../editable-text.component.js"
+//import {pointToGeo} from "../../helpers.js"
 
 const {MAX_FL_LVL,MIN_FL_LVL} = WP_DATATYPES ;
 
@@ -16,8 +17,8 @@ const Infos = function(props) {
           <EditableText x={x + 25} y={y+15} value={data[WP_DATATYPES.TYPE_FL]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_FL)}/>
         {props.isHovered || props.isEdited ?
         <g>
-          <EditableText x={x} y={y + 30} value={data[WP_DATATYPES.TYPE_LAT]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LAT)}/>
-          <EditableText x={x} y={y + 45} value={data[WP_DATATYPES.TYPE_LNG]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LNG)}/>
+          Lat :<EditableText x={x} y={y + 30} value={data[WP_DATATYPES.TYPE_LAT]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LAT)}/>
+          Lng :<EditableText x={x} y={y + 45} value={data[WP_DATATYPES.TYPE_LNG]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LNG)}/>
         </g> : null}
       </g>
 }

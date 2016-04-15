@@ -55,10 +55,10 @@ class MapEditorComponent extends Component {
     this.map.addInteraction(this.interaction);
   }
   handleDrawEvent(event){
-    const coords = event.feature.getGeometry().getCoordinates();//ol.proj.transform(event.feature.getGeometry().getCoordinates(), "EPSG:3857", "EPSG:4326");
+    const coords = ol.proj.transform(event.feature.getGeometry().getCoordinates(), "EPSG:3857", "EPSG:4326");
     this.props.onAddElement(this.props.selection,{
-      [WP_DATATYPES.TYPE_LNG]:coords[0],
-      [WP_DATATYPES.TYPE_LAT]:coords[1]
+      [WP_DATATYPES.TYPE_LNG]:coords[0].toFixed(2),
+      [WP_DATATYPES.TYPE_LAT]:coords[1].toFixed(2)
     })
   }
   componentWillReceiveProps(nextProps){

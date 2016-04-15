@@ -8,16 +8,16 @@ export const dataSample = {
             data: [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
-                    [WP_DATATYPES.TYPE_LAT]: 1000000,
-                    [WP_DATATYPES.TYPE_LNG]: 1500000,
+                    [WP_DATATYPES.TYPE_LAT]: 23.24,
+                    [WP_DATATYPES.TYPE_LNG]: 3.34,
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP2",
-                    [WP_DATATYPES.TYPE_LAT]: 0,
-                    [WP_DATATYPES.TYPE_LNG]: 0,
+                    [WP_DATATYPES.TYPE_LAT]: 28.92,
+                    [WP_DATATYPES.TYPE_LNG]: 6.15,
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP3",
-                    [WP_DATATYPES.TYPE_LAT]: 1100000,
-                    [WP_DATATYPES.TYPE_LNG]: 1700000,
+                    [WP_DATATYPES.TYPE_LAT]: 32.1,
+                    [WP_DATATYPES.TYPE_LNG]: 6.12,
                 }
             ]
         },
@@ -27,12 +27,12 @@ export const dataSample = {
             data: [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
-                    [WP_DATATYPES.TYPE_LAT]: 1300000,
-                    [WP_DATATYPES.TYPE_LNG]: 2300000,
+                    [WP_DATATYPES.TYPE_LAT]: 13.12,
+                    [WP_DATATYPES.TYPE_LNG]: 4.2,
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP2",
-                    [WP_DATATYPES.TYPE_LAT]: 1200000,
-                    [WP_DATATYPES.TYPE_LNG]: 3200000,
+                    [WP_DATATYPES.TYPE_LAT]: 22.3,
+                    [WP_DATATYPES.TYPE_LNG]: 4.8,
                 }
             ]
         }
@@ -44,13 +44,13 @@ export const dataSample = {
             data : [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
-                    [WP_DATATYPES.TYPE_LAT]: 1300000,
-                    [WP_DATATYPES.TYPE_LNG]: 2300000,
+                    [WP_DATATYPES.TYPE_LAT]: 22.22,
+                    [WP_DATATYPES.TYPE_LNG]: 4.5,
                     [WP_DATATYPES.TYPE_FL]: 230
                 }, {
                     [WP_DATATYPES.TYPE_NAME]: "WP2",
-                    [WP_DATATYPES.TYPE_LAT]: 1200000,
-                    [WP_DATATYPES.TYPE_LNG]: 3200000,
+                    [WP_DATATYPES.TYPE_LAT]: 23.23,
+                    [WP_DATATYPES.TYPE_LNG]: 5.5,
                     [WP_DATATYPES.TYPE_FL]: 320
                 }
             ]

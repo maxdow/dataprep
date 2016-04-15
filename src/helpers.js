@@ -15,7 +15,15 @@ export function waypointGroupToCollection(waypointGroup = {data :[]}){
 
 export function waypointToFeature(waypoint){
   return new ol.Feature({
-          geometry: new ol.geom.Point([waypoint[WP_DATATYPES.TYPE_LNG],waypoint[WP_DATATYPES.TYPE_LAT]]),
+          geometry: new ol.geom.Point(ol.proj.transform([waypoint[WP_DATATYPES.TYPE_LNG],waypoint[WP_DATATYPES.TYPE_LAT]],"EPSG:4326", "EPSG:3857")),
           name: waypoint[WP_DATATYPES.NAME]
         });
+}
+
+export function pointToGeo(coords) {
+  return coords; //ol.proj.transform(coords, "EPSG:3857", "EPSG:4326").map((item)=>item.toFixed(2))
+}
+
+export function GeoToPoint(lat,long) {
+  return ol.proj.transform(coords, "EPSG:3857", "EPSG:4326")
 }
