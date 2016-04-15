@@ -22,11 +22,11 @@ const FlightPlan = ({data,size, onUpdate}) => (
 
     <div className="fpl-form">
 
-    <div className="fpl-formleft">
+    <div>
 
       <div className="fpl-input fpl-input-adesdadep">
-          <img src="../../../assets/plane-up-32.png"/>
-        <div className="fpl-input-adesdadep--block fpl-input-geo ">
+        <img src="../../../assets/plane-up-32.png"/>
+        <div className="fpl-input fpl-input-geo ">
           <label>ADEP</label>
           <MaskedInput mask="11° 11' 11'' A" name="expiry" placeholder="11° 11' 11'' N" value={data.adep}/>
         </div>
@@ -39,24 +39,25 @@ const FlightPlan = ({data,size, onUpdate}) => (
 
       <div className="fpl-input fpl-input-adesdadep">
         <img src="../../../assets/plane-land-32.png"/>
-        <div className="fpl-input-adesdadep--block fpl-input-geo ">
+        <div className="fpl-input fpl-input-geo ">
           <label>ADES</label>
-          <MaskedInput mask="11° 11' 11'' A" name="expiry" placeholder="11° 11' 11'' N" value={data.ades}/>
+          <MaskedInput mask="11° 11' 11'' A" name="ades" placeholder="11° 11' 11'' N" value={data.ades}/>
         </div>
       </div>
       <div className="fpl-input fpl-input-geo ">
         <label>AADES</label>
-        <input value={data.aades}></input>
+          <MaskedInput mask="11° 11' 11'' A" name="aades" placeholder="11° 11' 11'' N" value={data.aades}/>
       </div>
     </div>
 
-    <div className="fpl-formright">
+    <div>
 
-      <div className="fpl-input">
+      <div className="fpl-input fpl-input-cruising">
         <label>Cruising speed</label>
-        <input value={data.speed}></input>KT
+        <MaskedInput mask="111" name="speed" placeholder="300" value={data.speed}/>KT
+
         <label>Level</label>
-        <input value={data.level}></input>
+        <MaskedInput mask="111" name="level" placeholder="300" value={data.level}/>FL
       </div>
 
       <div className="fpl-input">
