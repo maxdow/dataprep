@@ -40,7 +40,7 @@ export default class EditableText extends Component {
 
               <input type="text" value={this.state.value} onChange={this.handleOnChange.bind(this)}
               onKeyPress={this.handleKeyPress.bind(this)}
-              style={{maxWidth:"50px"}}
+              style={{maxWidth:"100px"}}
               />
             </foreignObject></g> :
             <text x={x} y={y}

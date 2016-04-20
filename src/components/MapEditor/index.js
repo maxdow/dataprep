@@ -10,13 +10,21 @@ import {waypointGroupToCollection} from "../../helpers"
 function dataToVector(data,vector){
   return vector ;
 }
-
+function interactionTypeByElmType(elmType) {
+  return elmType === OBJECTS.WP ? "Point" :
+         elmType === OBJECTS.FPL ? "LineString" :
+         "Point";
+}
 
 const iconStyleWaypoint = new ol.style.Style({
   image: new ol.style.Icon(({
     scale :0.5,
     src: "../../assets/waypoint.png"
-  }))
+  })),
+  stroke: new ol.style.Stroke({
+    color: "rgba(190,124,230,0.5)",
+    width: 4
+  })
 });
 
 class MapEditorComponent extends Component {
@@ -42,23 +50,32 @@ class MapEditorComponent extends Component {
     });
 
     //this.addInteraction();
+    this.map.on("click",this.handleDrawEvent.bind(this))
 
   }
   addInteraction = (interactionType) => {
+    console.log("interaction type",interactionType);
     //remove interaction
     this.interaction = new ol.interaction.Draw({
       features: this.props.waypoints,
-      type: "Point",
+      type: interactionTypeByElmType(interactionType),
       style:iconStyleWaypoint
     });
-    this.interaction.on("drawend",this.handleDrawEvent.bind(this))
+
+    //this.interaction.handleEvent(true);
+    //this.interaction.on("click",this.handleDrawEvent.bind(this))
     this.map.addInteraction(this.interaction);
   }
   handleDrawEvent(event){
-    const coords = ol.proj.transform(event.feature.getGeometry().getCoordinates(), "EPSG:3857", "EPSG:4326");
+    if(!this.interaction) {
+      return ;
+    }
+
+    const coords = ol.proj.toLonLat(event.coordinate);
+    //const coords = ol.proj.toLonLat(event.feature.getGeometry().getCoordinates());
     this.props.onAddElement(this.props.selection,{
-      [WP_DATATYPES.TYPE_LNG]:coords[0].toFixed(2),
-      [WP_DATATYPES.TYPE_LAT]:coords[1].toFixed(2)
+      [WP_DATATYPES.TYPE_LNG]:coords[0],
+      [WP_DATATYPES.TYPE_LAT]:coords[1]
     })
   }
   componentWillReceiveProps(nextProps){
@@ -68,7 +85,11 @@ class MapEditorComponent extends Component {
     }
     if(nextProps.currentElm) {
       if(!this.interaction) {
-        this.addInteraction();
+        this.addInteraction(nextProps.currentElm);
+      }
+      if(this.interaction && nextProps.currentElm !== this.props.currentElm) {
+        this.map.removeInteraction(this.interaction);
+        this.addInteraction(nextProps.currentElm);
       }
 
     } else {

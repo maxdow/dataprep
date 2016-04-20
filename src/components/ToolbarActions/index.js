@@ -53,11 +53,11 @@ export default class ToolbarActionComponent extends Component {
 
   }
 
-  handleMenuClick(action){
-    console.log(action);
+  handleMenuClick(elmType){
+    this.props.onNewElement(elmType);
     this.setState({
       contextMenuVisible : false
-    })
+    });
   }
 
   handleClickAdd(event){

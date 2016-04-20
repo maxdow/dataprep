@@ -33,7 +33,6 @@ class Trajectory extends Component {
   render() {
     const {flightdata, canvas, onUpdate} = this.props;
     const waypoints = flightdata.data ;
-    console.log(waypoints)
     return (
       <g>
       {waypoints.map((waypointData,index) => {

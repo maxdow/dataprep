@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import geolib from "geolib";
 import {OBJECTS,WP_DATATYPES} from "../../datatypes.constants.js"
 import {pointToGeo} from "../../helpers.js"
-      // {data.map((waypoint) => <li key={waypoint.name}>{waypointGroup.get("name")}</li>)}
-      //
+
 //ol.coordinate.toStringHDMS(coord);
 const WaypointEditor = ({data}) => {
 
@@ -12,7 +12,7 @@ const WaypointEditor = ({data}) => {
     <ul className="waypoint-editor-list">
       {data.data.map((waypoint,i) => {
         return <li key={i}>
-          {waypoint[WP_DATATYPES.TYPE_NAME]} - {waypoint[WP_DATATYPES.TYPE_LAT]} / {waypoint[WP_DATATYPES.TYPE_LNG]}
+          {waypoint[WP_DATATYPES.TYPE_NAME]} - {geolib.decimal2sexagesimal(waypoint[WP_DATATYPES.TYPE_LAT])} / {geolib.decimal2sexagesimal(waypoint[WP_DATATYPES.TYPE_LNG])}
         </li>
       }
         )}

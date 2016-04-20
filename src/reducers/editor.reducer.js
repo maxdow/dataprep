@@ -14,6 +14,12 @@ const defaultState = {
 // selectedElementType
 export default function editorReducer(state=defaultState,action){
   switch(action.type) {
+    case "NEW_ELM" : {
+      return Object.assign({},state,{
+        currentElementType:action.data.elmtype,
+        dataSelection:action.data
+      });
+    }
     case "DELETE_MODE" :
       return Object.assign({},state,{deleteMode:!state.deleteMode});
     case "SELECT_ELM" :

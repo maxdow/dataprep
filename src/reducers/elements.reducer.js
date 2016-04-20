@@ -27,6 +27,9 @@ export default function elementsReducer(state=data, action) {
   //console.log(action);
 
   switch(action.type) {
+    case "NEW_ELM" : {
+      return newElement(state,action.data)
+    }
     case "UPDATE_ELM" : {
       return updateElment(state,action.data);
     }
@@ -63,11 +66,17 @@ function updateElment(state,dataAction){
   );
 }
 
-
+function newElement(state,dataAction){
+  return state.updateIn([dataAction.elmtype],
+          (listElement) => listElement.push(Immutable.fromJS({
+            name : dataAction.elmtype+"_"+dataAction.idElement,
+            id : dataAction.idElement,
+            data : []
+          })))
+}
 
 function addElement(state,dataAction) {
   let {data={},selection} = dataAction;
-  console.log(dataAction);
   return state.updateIn([selection.elmtype],
           (listElement) => listElement.update(listElement.findIndex(item => item.get("id") === selection.idElement),
                            (element) => element.update("data",

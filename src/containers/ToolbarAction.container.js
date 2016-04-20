@@ -13,10 +13,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onNewElement: (elmtype) => {
-      dispatch(newElement({elmtype}))
+      dispatch(({type:"NEW_ELM",data:{elmtype,idElement:Date.now()}}))
     },
     onExportElement : (elmtype,id) => {
-      dispatch((data) =>  ({type: "EXPORT_ELM",data}))
+      dispatch(({type: "EXPORT_ELM",data:{elmtype,id}}))
     }
   }
 }

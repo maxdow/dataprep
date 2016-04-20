@@ -69,7 +69,7 @@ const FlightPlan = ({data,size, onUpdate}) => (
     </div>
 
     <div className="fpl-draw">
-      {data.data.length ? <svg height={size.height} width={size.width} >
+      {data.data.length > 1 ? <svg height={size.height} width={size.width} >
 
           <Trajectory flightdata={data} canvas={size}
           onUpdate={onUpdate.bind(this,OBJECTS.FPL,data.id)}

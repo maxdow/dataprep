@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import {WP_DATATYPES} from "../../datatypes.constants"
 
+import geolib from "geolib";
+
 import Triangle from "../triangle.component.js"
 import EditableText from "../editable-text.component.js"
 //import {pointToGeo} from "../../helpers.js"
@@ -17,8 +19,10 @@ const Infos = function(props) {
           <EditableText x={x + 25} y={y+15} value={data[WP_DATATYPES.TYPE_FL]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_FL)}/>
         {props.isHovered || props.isEdited ?
         <g>
-          Lat :<EditableText x={x} y={y + 30} value={data[WP_DATATYPES.TYPE_LAT]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LAT)}/>
-          Lng :<EditableText x={x} y={y + 45} value={data[WP_DATATYPES.TYPE_LNG]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_LNG)}/>
+          Lat :<EditableText x={x} y={y + 30} value={geolib.decimal2sexagesimal(data[WP_DATATYPES.TYPE_LAT])}
+          onChange={(value) => props.onChange(WP_DATATYPES.TYPE_LAT,geolib.sexagesimal2decimal(value))}/>
+          Lng :<EditableText x={x} y={y + 45} value={geolib.decimal2sexagesimal(data[WP_DATATYPES.TYPE_LNG])}
+          onChange={(value) => props.onChange(WP_DATATYPES.TYPE_LNG,geolib.sexagesimal2decimal(value))}/>
         </g> : null}
       </g>
 }
