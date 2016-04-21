@@ -70,13 +70,17 @@ export default class ToolbarActionComponent extends Component {
     })
   }
   handleExport(){
-
+    console.log(this.props.data);
   }
 
   render() {
     return <div className="toolbar-action">
-      <button onClick={this.handleClickAdd.bind(this)} className="toolbar-action-button"><span>new</span><i className="fa fa-2x fa-plus"></i></button>
-      <button className="toolbar-action-button"><span>export</span><i className="fa fa-2x fa-download"></i></button>
+
+      <button onClick={() => this.handleClickAdd()} className="toolbar-action-button"><span>new</span><i className="fa fa-2x fa-plus"></i></button>
+
+      <button onClick={() => this.handleExport()} className="toolbar-action-button"><span>export</span><i className="fa fa-2x fa-download"></i></button>
+
+
       <Menu position={this.state.contextmenuPosition} visible={this.state.contextMenuVisible} items={this.contextMenuContent} onClick={this.handleMenuClick.bind(this)}/>
     </div>
   }

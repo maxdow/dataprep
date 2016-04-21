@@ -67,11 +67,14 @@ function updateElment(state,dataAction){
   );
 }
 
+//TODO create new element with custom default by type as the next addElement function does
 function newElement(state,dataAction){
   return state.updateIn([dataAction.elmtype],
           (listElement) => listElement.push(Immutable.fromJS({
             name : dataAction.elmtype+"_"+dataAction.idElement,
             id : dataAction.idElement,
+            eta:new Date(),
+            speed:300,
             data : []
           })))
 }

@@ -41,6 +41,8 @@ export const dataSample = {
         {
             name : "FlightPlan test",
             id:1,
+            etd : new Date(),
+            speed:340,
             data : [
                 {
                     [WP_DATATYPES.TYPE_NAME]: "WP1",
