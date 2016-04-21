@@ -43,6 +43,7 @@ export default function elementsReducer(state=data, action) {
       let {elmtype,index} = action.data;
       return state.updateIn([elmtype],(list)=>list.splice(index,1));
     }
+
     default:
     return state;
 

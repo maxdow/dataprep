@@ -1,8 +1,8 @@
 .library {
   border: 1px solid #aaa;
-  border-radius: 5px;
   padding: 5px;
   background: #fefefe;
+  width: 100%;
 }
 
 .library-header {

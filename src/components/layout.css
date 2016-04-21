@@ -12,4 +12,6 @@
   min-width: 400px;
   min-height: 100%;
   display: flex;
+  border-radius: 5px;
+
 }

@@ -20,7 +20,7 @@ export default class EditableText extends Component {
       this.setState({
         isEdited : false
       });
-    this.props.onChange(parseInt(event.target.value))
+    this.props.onChange(event.target.value)
     }
   }
   handleOnChange(event){
