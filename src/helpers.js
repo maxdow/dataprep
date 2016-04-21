@@ -9,6 +9,10 @@ export function getData(data,elmtype,id){
   return collection ? collection.find((elm) => elm.get("id") === id).toJS() : null
 }
 
+export function getCurrentData(state){
+  return getData(state.data,state.editor.currentElementType,state.editor.dataSelection.idElement)
+}
+
 export function waypointGroupToCollection(waypointGroup = {data :[]}){
   return waypointGroup.data.map(waypointToFeature)
 }
