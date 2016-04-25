@@ -30,8 +30,8 @@ export default function elementsReducer(state=data, action) {
     case "NEW_ELM" : {
       return newElement(state,action.data)
     }
-    case "UPDATE_ELM" : {
-      return updateElment(state,action.data);
+    case "UPDATE_ELM_DATA" : {
+      return updateElementData(state,action.data);
     }
     case "ADD_ELM" : {
       return addElement(state,action.data);
@@ -52,7 +52,8 @@ export default function elementsReducer(state=data, action) {
 }
 
 
-function updateElment(state,dataAction){
+function updateElementData(state,dataAction){
+  console.log("update element",dataAction);
   let {index,elmtype,datatype,value,idElement} = dataAction;
   return state.updateIn([elmtype],
     (listElement) => listElement.update(listElement.findIndex(item => item.get("id") === idElement),

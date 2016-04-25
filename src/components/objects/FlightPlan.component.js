@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment"
 
 import Trajectory from "./trajectory.js";
 import {OBJECTS} from "../../datatypes.constants.js"
@@ -17,8 +18,11 @@ const formatGeographyInput = () => {
    */
 }
 
-const FlightPlan = ({data,size, onUpdate}) => (
-  <div className="fpl">
+const formatHour = (event) => moment(event.target.value,"YYYY/MM/DD HH:MM").toDate()
+
+const FlightPlan = ({data,size, onUpdate, onUpdateData}) => {
+
+  return <div className="fpl">
 
     <div className="fpl-form">
 
@@ -32,7 +36,7 @@ const FlightPlan = ({data,size, onUpdate}) => (
         </div>
         <div className="fpl-input">
           <label>ETD</label>
-          <MaskedInput mask="1111/11/11 11:11" name="etd" placeholder="yyyy/MM/DD HH:MM" value={data.etd}/>
+          <MaskedInput mask="1111/11/11 11:11" name="etd" placeholder="YYYY/MM/DD HH:MM" onChange={(e) => onUpdate("etd",formatHour(e))} value={moment(data.etd).format("YYYY/MM/DD HH:MM")}/>
         </div>
       </div>
 
@@ -54,7 +58,7 @@ const FlightPlan = ({data,size, onUpdate}) => (
 
       <div className="fpl-input fpl-input-cruising">
         <label>Cruising speed</label>
-        <MaskedInput mask="111" name="speed" placeholder="300" value={data.speed}/>KT
+        <MaskedInput mask="111" name="speed" placeholder="300" onChange={(e) => onUpdate("speed",parseInt(event.target.value))} value={data.speed.toString()}/>KT
 
         <label>Level</label>
         <MaskedInput mask="111" name="level" placeholder="300" value={data.level}/>FL
@@ -72,7 +76,7 @@ const FlightPlan = ({data,size, onUpdate}) => (
       {data.data.length > 1 ? <svg height={size.height} width={size.width} >
 
           <Trajectory flightdata={data} canvas={size}
-          onUpdate={onUpdate.bind(this,OBJECTS.FPL,data.id)}
+          onUpdate={onUpdateData.bind(this,OBJECTS.FPL,data.id)}
           onWPClick={()=>{}/*this.handleWPClick.bind(this)*/}
           />
 
@@ -80,5 +84,5 @@ const FlightPlan = ({data,size, onUpdate}) => (
     </div>
   </div>
 
-)
+}
 export default FlightPlan ;

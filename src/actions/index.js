@@ -38,9 +38,9 @@ export const newElement = (data) => {
   }
 }
 
-export const updateElement = (data) => {
+export const updateElementData = (data) => {
   return {
-    type: "UPDATE_ELM",
+    type: "UPDATE_ELM_DATA",
     data
   }
 }
