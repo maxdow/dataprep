@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import moment from "moment"
+import geolib from "geolib"
 
 import Trajectory from "./trajectory.js";
-import {OBJECTS} from "../../datatypes.constants.js"
+import {OBJECTS,WP_DATATYPES} from "../../datatypes.constants.js"
 
 import MaskedInput from "react-maskedinput"
 import "./fpl.css"
@@ -16,6 +17,19 @@ const formatGeographyInput = () => {
     }
   }
    */
+}
+
+function computeETD(data){
+  const startPosition = {
+    latitude : data.data[0][WP_DATATYPES.TYPE_LAT],
+    longitude : data.data[0][WP_DATATYPES.TYPE_LNG]
+  }
+  const finalPosition = {
+    latitude : data.data[data.data.length-1][WP_DATATYPES.TYPE_LAT],
+    longitude : data.data[data.data.length-1][WP_DATATYPES.TYPE_LNG]
+  }
+  //startPosition,finalPosition,speed,etd
+  return geolib.getDistance(startPosition,finalPosition)
 }
 
 const formatHour = (event) => moment(event.target.value,"YYYY/MM/DD HH:MM").toDate()
@@ -65,7 +79,7 @@ const FlightPlan = ({data,size, onUpdate, onUpdateData}) => {
       </div>
 
       <div className="fpl-input">
-      ETA : xx
+      {"ETA : "+ computeETD(data)}
       </div>
 
     </div>

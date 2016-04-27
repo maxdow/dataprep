@@ -12,7 +12,7 @@ function dataToVector(data,vector){
 }
 function interactionTypeByElmType(elmType) {
   return elmType === OBJECTS.WP ? "Point" :
-         elmType === OBJECTS.FPL ? "LineString" :
+         elmType === OBJECTS.FPL ? "Point" :
          "Point";
 }
 
