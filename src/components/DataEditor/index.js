@@ -17,10 +17,10 @@ const canvasSize = {
 const helpMessage = () => ({__html: `
                                   <h1>DataPrep</h1>
                                   <p>Select an element from the library or create a new one by clicking on new</p>
-                                  <p>For this moment, the workflow is :</p>
+                                  <p>For the moment, the workflow is :</p>
                                   <ul>
-                                    <li>Create an object ( new button )</li>
-                                    <li>Add waypoints throught the map</li>
+                                    <li>Create an object (new button)</li>
+                                    <li>Add waypoints throught the map (move like googlemaps)</li>
                                     <li>Adjust values with the editor</li>
                                     <li>Export to a geojson file (export button , FPL only)</li>
                                   </ul>

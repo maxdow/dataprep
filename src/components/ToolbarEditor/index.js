@@ -25,20 +25,20 @@ const configByElmType = {
 const ItemEditor = ({elmType, onClick, currentElm}) => (
     <li onClick={() => currentElm === elmType ? onClick.bind(null,elmType) : null}
       className={`toolbar-editor-tab ${currentElm === elmType ? "toolbar-editor-tab--active" : "toolbar-editor-tab--inactive"}`}>
-      <i className={configByElmType[elmType].icon}></i> {configByElmType[elmType].name}
+
     </li>
   )
-
-
+/*
+        <div className="toolbar-editor-actions"><button className="toolbar-editor-actions__action">+</button></div>
+*/
 export default class ToolBarEditorComponent extends Component {
   render() {
-    return (
-    <div className="toolbar-editor">
-      <ul className="toolbar">
-        <ItemEditor onClick={this.props.onSelectElement} elmType={OBJECTS.WP} currentElm={this.props.currentElm}/>
-        <ItemEditor onClick={this.props.onSelectElement} elmType={OBJECTS.FPL} currentElm={this.props.currentElm}/>
-      </ul>
-    </div>
-    )
+    const {currentElm} = this.props;
+
+    return currentElm ? (
+      <div className="toolbar-editor">
+        <div className="toolbar-editor-item"><i className={configByElmType[currentElm].icon}></i> {configByElmType[currentElm].name}</div>
+      </div>
+    ) : null
   }
 }
