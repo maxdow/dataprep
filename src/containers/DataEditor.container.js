@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { getData } from "../helpers"
 import DataEditorComponent from "../components/DataEditor"
 import {OBJECTS} from "../datatypes.constants.js";
-import {updateElementData} from "../actions/"
+import {updateElementData,updateElement} from "../actions/"
 
 
 
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateElementData({elmtype,idElement,index,datatype,value}));
     },
     onUpdate : function(elmtype,idElement,datatype,value){
-      console.log("update elm",elmtype,idElement,datatype,value)
+      dispatch(updateElement({elmtype,idElement,datatype,value}))
     }
   }
 }

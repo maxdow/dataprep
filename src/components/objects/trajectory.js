@@ -31,7 +31,7 @@ class Trajectory extends Component {
     this.props.onWPClick(index);
   }
   render() {
-    const {flightdata, canvas, onUpdate} = this.props;
+    const {flightdata, canvas, onUpdate,showWaypointInfo} = this.props;
     const waypoints = flightdata.data ;
     return (
       <g>
@@ -44,7 +44,7 @@ class Trajectory extends Component {
           x={getPositionXWaypoint(index,waypoints.length,canvas.width)}
           onUpdate={onUpdate.bind(this,index)}
           onClick={this.handleWPClick.bind(this,index)}
-
+          showWaypointInfo={showWaypointInfo}
         />
         )}
       )}

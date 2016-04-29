@@ -6,7 +6,8 @@ import {changeView} from "../actions"
 
 const mapStateToProps = (state) => {
   return {
-    view : state.editor.currentView
+    view : state.editor.currentView,
+    dataSelection : state.editor.dataSelection
   }
 }
 

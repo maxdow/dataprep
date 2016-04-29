@@ -38,6 +38,13 @@ export const newElement = (data) => {
   }
 }
 
+export const updateElement = (data) => {
+  return {
+    type: "UPDATE_ELM",
+    data
+  }
+}
+
 export const updateElementData = (data) => {
   return {
     type: "UPDATE_ELM_DATA",

@@ -1,4 +1,6 @@
 import ol from "openlayers";
+import moment from "moment"
+import geolib from "geolib"
 import {OBJECTS,WP_DATATYPES} from "./datatypes.constants.js"
 
 /**
@@ -22,4 +24,33 @@ export function waypointToFeature(waypoint){
           geometry: new ol.geom.Point(ol.proj.fromLonLat([waypoint[WP_DATATYPES.TYPE_LNG],waypoint[WP_DATATYPES.TYPE_LAT]])),
           name: waypoint[WP_DATATYPES.NAME]
         });
+}
+
+
+export function computeTimestamps(waypoints,etd,speed){
+  //if(waypoints.length)
+  var currentTime = etd;
+  var previousPoint = waypoints[0];
+  return waypoints.map(function(waypoint,i){
+    if(i!==0){
+      currentTime = moment(currentTime).add(computeTimeBetweenPoints(previousPoint,waypoint,speed),"s").toDate();
+      previousPoint = waypoint;
+    }
+    return Object.assign(waypoint,{
+      timestamp : currentTime
+    })
+  });
+}
+
+function computeTimeBetweenPoints(start,final,speed){
+
+  const d = geolib.getDistance({
+    latitude : start[WP_DATATYPES.TYPE_LAT],
+    longitude : start[WP_DATATYPES.TYPE_LNG]
+  },{
+    latitude : final[WP_DATATYPES.TYPE_LAT],
+    longitude : final[WP_DATATYPES.TYPE_LNG]
+  }); // m
+  const v = speed*0.514444444; //m.s-1
+  return moment.duration(d/v,"s");
 }

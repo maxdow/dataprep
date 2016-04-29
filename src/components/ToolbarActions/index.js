@@ -15,6 +15,7 @@
 import React, { Component } from "react";
 import {OBJECTS} from "../../datatypes.constants.js"
 
+import {exportToGeoJSON,createFile} from "../../export.js"
 import "../toolbar.css"
 import "./toolbar-action.css"
 import "./contextmenu.css"
@@ -29,6 +30,8 @@ const Menu = ({position,visible,items,onClick}) => (
     {items.map((item,i) => <li className="context-menu--item" key={i} onClick={onClick.bind(null,item.action)}>{item.text}</li>)}
   </ul>
 );
+
+
 
 
 
@@ -70,7 +73,11 @@ export default class ToolbarActionComponent extends Component {
     })
   }
   handleExport(){
-    console.log(this.props.data);
+    if(this.props.currentElm !== OBJECTS.FPL) {
+      window.alert("Export on FlightPlan Only")
+    } else {
+      createFile(this.props.data.name,exportToGeoJSON(this.props.data));
+    }
   }
 
   render() {

@@ -17,6 +17,9 @@ function logChange(val) {
     console.log("Selected: " + val);
 }
 
+// TODO : info on hover
+//{this.props.dataSelection.idElement ? "click to add points" : ""}
+//
 export default class ToolBarGeoComponent extends Component {
   render() {
     return (

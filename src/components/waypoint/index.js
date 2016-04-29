@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import {WP_DATATYPES} from "../../datatypes.constants"
-
+import moment from "moment"
 import geolib from "geolib";
 
 import Triangle from "../triangle.component.js"
@@ -13,17 +13,20 @@ const {MAX_FL_LVL,MIN_FL_LVL} = WP_DATATYPES ;
 const Infos = function(props) {
   const {x, y, data} = props;
 
-  return <g>
+  return <g className={props.isHovered ? "waypoint-info--hovered" : ""}>
         <text x={x} y={y}>{data[WP_DATATYPES.TYPE_NAME]}</text>
           <text x={x} y={y+15}>{"FL"}</text>
           <EditableText x={x + 25} y={y+15} value={data[WP_DATATYPES.TYPE_FL]} onChange={props.onChange.bind(this,WP_DATATYPES.TYPE_FL)}/>
         {props.isHovered || props.isEdited ?
         <g>
-          Lat :<EditableText x={x} y={y + 30} value={geolib.decimal2sexagesimal(data[WP_DATATYPES.TYPE_LAT])}
+          <text x={x} y={y + 30}>Lat :</text><EditableText x={x+35} y={y + 30} value={geolib.decimal2sexagesimal(data[WP_DATATYPES.TYPE_LAT])}
           onChange={(value) => props.onChange(WP_DATATYPES.TYPE_LAT,geolib.sexagesimal2decimal(value))}/>
-          Lng :<EditableText x={x} y={y + 45} value={geolib.decimal2sexagesimal(data[WP_DATATYPES.TYPE_LNG])}
+          <text x={x} y={y + 45}>Lng :</text><EditableText x={x+35} y={y + 45} value={geolib.decimal2sexagesimal(data[WP_DATATYPES.TYPE_LNG])}
           onChange={(value) => props.onChange(WP_DATATYPES.TYPE_LNG,geolib.sexagesimal2decimal(value))}/>
-        </g> : null}
+          <text x={x} y={y + 65}>Time : </text><text x={x+45} y={y+65}>{moment(data.timestamp).format("YYYY/MM/DD HH:mm")}</text>
+
+        </g> : null
+        }
       </g>
 }
 
@@ -140,11 +143,11 @@ export default class Waypoint extends Component {
               onMouseDown={this.handleMouseDown.bind(this)}
               color={this.getColor()}
             />
-            <Infos x={x + 10} y={y}
-            onChange={this.props.onUpdate.bind(this)}
-            data={this.props.data}
-            {...this.state}
-            />
+            {this.props.showWaypointInfo || this.state.isHovered ? <Infos x={x + 10} y={y}
+              onChange={this.props.onUpdate.bind(this)}
+              data={this.props.data}
+              {...this.state}
+              /> :null}
           </g>
   }
 }
