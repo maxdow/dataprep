@@ -37,6 +37,7 @@ export function createFile(name,data){
   a.download = name+".geojson";
 
   a.click();
-
-  window.URL.revokeObjectURL( url );
+  setTimeout(function(){
+    window.URL.revokeObjectURL( url );
+  })
 }
