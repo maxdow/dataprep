@@ -48,7 +48,7 @@ class Trajectory extends Component {
         />
         )}
       )}
-      <polyline fill="none" stroke="rgba(0,0,0,0.5)" strokeWidth="2" points={getCoordsTrajectory(waypoints,canvas)}/>
+      <polyline fill="none" stroke="rgba(0,0,0,0.2)" strokeWidth="2" points={getCoordsTrajectory(waypoints,canvas)}/>
     </g>
     )
   }
