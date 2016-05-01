@@ -27,6 +27,13 @@ export function waypointToFeature(waypoint){
 }
 
 
+export function lineCollectionFromPoints(points){
+  return new ol.Feature({
+    geometry: new ol.geom.LineString(points.map((point)=>ol.proj.fromLonLat([point[WP_DATATYPES.TYPE_LNG],point[WP_DATATYPES.TYPE_LAT]])))
+  });
+}
+
+
 export function computeTimestamps(waypoints,etd,speed){
   //if(waypoints.length)
   var currentTime = etd;

@@ -5,7 +5,7 @@ require("openlayers/css/ol.css");
 require("./mapeditor.css");
 
 import {OBJECTS,WP_DATATYPES} from "../../datatypes.constants.js"
-import {waypointGroupToCollection} from "../../helpers"
+import {waypointGroupToCollection,lineCollectionFromPoints} from "../../helpers"
 
 function dataToVector(data,vector){
   return vector ;
@@ -33,6 +33,7 @@ class MapEditorComponent extends Component {
 
     this.vectorSource = new ol.source.Vector();
 
+
     this.map = new ol.Map({
       size:[700,300],
       layers: [
@@ -48,7 +49,6 @@ class MapEditorComponent extends Component {
         zoom: 2
       })
     });
-
     //this.addInteraction();
     this.map.on("click",this.handleDrawEvent.bind(this))
 
@@ -70,7 +70,6 @@ class MapEditorComponent extends Component {
     if(!this.interaction) {
       return ;
     }
-
     const coords = ol.proj.toLonLat(event.coordinate);
     //const coords = ol.proj.toLonLat(event.feature.getGeometry().getCoordinates());
     this.props.onAddElement(this.props.selection,{
@@ -82,6 +81,9 @@ class MapEditorComponent extends Component {
     if(this.props.data !== nextProps.data){
       this.vectorSource.clear(true);
       this.vectorSource.addFeatures(waypointGroupToCollection(nextProps.data));
+      if(nextProps.currentElm === OBJECTS.FPL){
+        this.vectorSource.addFeature(lineCollectionFromPoints(nextProps.data.data));
+      }
     }
     if(nextProps.currentElm) {
       if(!this.interaction) {
@@ -102,7 +104,6 @@ class MapEditorComponent extends Component {
     this.map.setTarget(this.refs.target);
   }
   shouldComponentUpdate() {
-    //console.log("render")
     this.map.render();
     return false; // because react is just a wrapper for ol
   }
