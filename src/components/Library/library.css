@@ -23,6 +23,10 @@
   margin-left: auto;
 }
 
+.library-content {
+  padding: 5px;
+}
+
 .library-object-header {
  text-align: right;
  border-bottom: 1px solid #ddd;
