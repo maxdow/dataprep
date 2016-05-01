@@ -24,7 +24,6 @@ function filter(object,datatype,value){
 }
 
 export default function elementsReducer(state=data, action) {
-  //console.log(action);
 
   switch(action.type) {
     case "NEW_ELM" : {
