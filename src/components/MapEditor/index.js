@@ -32,7 +32,11 @@ class MapEditorComponent extends Component {
     super(props);
 
     this.vectorSource = new ol.source.Vector();
-
+    this.vectorLayer = new ol.layer.Vector({source: this.vectorSource,style:iconStyleWaypoint});
+    this.view = new ol.View({
+      center: [0,0],
+      zoom: 2
+    });
 
     this.map = new ol.Map({
       size:[700,300],
@@ -42,19 +46,16 @@ class MapEditorComponent extends Component {
             layer: "toner-lite"
           })
         }),
-        new ol.layer.Vector({source: this.vectorSource,style:iconStyleWaypoint})
+        this.vectorLayer
       ],
-      view: new ol.View({
-        center: [0,0],
-        zoom: 2
-      })
+      view: this.view
     });
     //this.addInteraction();
     this.map.on("click",this.handleDrawEvent.bind(this))
 
   }
   addInteraction = (interactionType) => {
-    console.log("interaction type",interactionType);
+
     //remove interaction
     this.interaction = new ol.interaction.Draw({
       features: this.props.waypoints,
@@ -78,6 +79,7 @@ class MapEditorComponent extends Component {
     })
   }
   componentWillReceiveProps(nextProps){
+    //TODO extract to function
     if(this.props.data !== nextProps.data){
       this.vectorSource.clear(true);
       this.vectorSource.addFeatures(waypointGroupToCollection(nextProps.data));
@@ -85,6 +87,13 @@ class MapEditorComponent extends Component {
         this.vectorSource.addFeature(lineCollectionFromPoints(nextProps.data.data));
       }
     }
+    if(this.props.selection.idElement !== nextProps.selection.idElement) {
+
+      this.view.fit(this.vectorSource.getExtent(), this.map.getSize());
+    }
+
+
+    //TODO extract to function
     if(nextProps.currentElm) {
       if(!this.interaction) {
         this.addInteraction(nextProps.currentElm);
